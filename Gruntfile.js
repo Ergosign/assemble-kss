@@ -34,7 +34,19 @@ module.exports = function(grunt) {
                 eqnull: true,
                 node: true
             },
-            all: ['Gruntfile.js', 'index.js']
+            all: ['Gruntfile.js', 'lib/**/*.js']
+        },
+
+        /**
+         * Run mocha tests.
+         */
+        mochaTest: {
+            tests: {
+                options: {
+                    reporter: 'progress'
+                },
+                src: ['test/**/*_test.js']
+            }
         },
 
         assemble: {
@@ -62,4 +74,7 @@ module.exports = function(grunt) {
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'clean', 'assemble']);
+
+    // Tests to be run.
+    grunt.registerTask('test', ['default', 'mochaTest']);
 };
