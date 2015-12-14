@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Style Guide</title>
+
+    <meta name="description" content="">
+    <meta name="generator" content="kss-node">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- bower:css -->
+    <!-- endbower -->
+
+    <link rel="stylesheet" href="css/style-guide.css">
+    <link rel="stylesheet" href="css/documentation.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style id="inline-kss-hack"></style>
+    <style id="inline-kss-hack-desktop" media="screen and (min-width: 992px)" type="text/css"></style>
+</head>
+<body id="kss-node">
+
+<div class="kss-sidebar kss-style">
+    <header class="kss-header">
+        <img src="img/ergosign-logo.svg" class="kss-logo"/>
+    </header>
+    <nav class="kss-nav">
+        <ul class="kss-nav__menu">
+            {{!--
+                        <li class="kss-nav__menu-item">
+                            <a href="././"><span class="kss-nav__name kss-section-header">Overview</span></a>
+                        </li>
+            --}}
+            {{#eachSectionRoot page.sections}}
+                <li class="kss-nav__menu-item kss-menu-section">
+                    <a href="{{sectionName}}.html"
+                       {{#ifReferenceOfSection ../sectionName}}class="kss-active-section"{{/ifReferenceOfSection}}><span
+                            class="kss-nav__name kss-section-header ">{{sectionTitle}}</span></a>
+                    <ul class="kss-nav__menu-child">
+                        {{#eachSubSectionQuery sectionName}}
+                            {{#ifLevel 2}}
+                                <li class="kss-nav__menu-item">
+                                    <a href="{{../../sectionName}}.html#kssref-{{sectionName}}"><span
+                                            class="kss-nav__name kss-item">{{sectionTitle}}</span></a>
+                                </li>
+                            {{/ifLevel}}
+                        {{/eachSubSectionQuery}}
+                    </ul>
+                </li>
+            {{/eachSectionRoot}}
+        </ul>
+    </nav>
+</div>
+
+
+<article role="main" class="kss-main">
+    {{#if homepage}}
+        <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
+            {{{homepage}}}
+        </div>
+    {{else}}
+
+    {{!
+    Display each section, in order.
+
+    The "root" element comes first in this loop, and can be detected using
+    the "#ifLevel 1" block as seen below.
+    }}
+        {{#eachSubSectionQuery sectionName page.sections}}
+            {{#ifLevel 1}}
+            <div id="kssref-{{sectionName}}" class="kss-section kss-section--depth-{{level}}">
+            {{else}}
+            <section id="kssref-{{sectionName}}" class="kss-section kss-section--depth-{{level}}">
+            {{/ifLevel}}
+
+            <div class="kss-style">
+                <h{{level}} class="kss-title kss-title--level-{{level}}">
+                    <a class="kss-title__permalink" href="#kssref-{{sectionName}}">
+                        {{sectionTitle}}
+                        <span class="kss-title__permalink-hash">#permalink</span>
+                    </a>
+                </h{{level}}>
+                {{!--
+                                                {{#if parameters}}
+                                                    <ul class="kss-parameters">
+                                                        {{#eachParameter}}
+                                                            <li class="kss-parameters__item">
+                                                                <code class="kss-parameters__name">{{name}}</code>
+
+                                                                <div class="kss-parameters__description">{{{description}}}</div>
+                                                            </li>
+                                                        {{/eachParameter}}
+                                                    </ul>
+                                                {{/if}}
+                --}}
+                {{#if description}}
+                    <div class="kss-description">
+                        {{#markdown}}{{{description}}}{{/markdown}}
+                    </div>
+                {{/if}}
+
+            </div>
+
+            {{#if markup}}
+                <div class="kss-modifier__wrapper">
+                    <div class="kss-modifier__heading kss-style">Example
+                        <div class="kss-modifier__heading--srcPath">{{srcPath}}</div>
+                    </div>
+                    {{~#if variations}}
+                        <div class="kss-modifier__default-name kss-style">Default styling</div>
+                    {{/if~}}
+                    <div class="kss-modifier__example kss-wrapper
+                        {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
+                     ">
+                        {{#isTeaser}}
+                            {{#inclTeaserSize 'S'}}
+                                <div>Teaser S:</div>
+                                <div class="row">
+                                    <div class="col-xxs-6 col-md-4 teaser-wrapper--s">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/inclTeaserSize}}
+                            {{#inclTeaserSize 'L'}}
+                                <div>Teaser L:</div>
+                                <div class="row">
+                                    <div class="col-md-8 teaser-wrapper--l">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/inclTeaserSize}}
+                            {{#inclTeaserSize 'XL'}}
+                                <div>Teaser XL:</div>
+                                <div class="row">
+                                    <div class="col-md-8 teaser-wrapper--xl">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/inclTeaserSize}}
+                            {{#inclTeaserSize 'XXL'}}
+                                <div>Teaser XXL:</div>
+                                <div class="row">
+                                    <div class="col-xs-12 teaser-wrapper--xxl">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/inclTeaserSize}}
+                        {{else}}
+                            {{{markupWithStyle}}}
+                        {{/isTeaser}}
+                    </div>
+                    {{~#if variations~}}
+                        Variations: <select class="modifier-select">
+                        <option value="-">Show Default</option>
+                        <option value="all">All Variantions</option>
+                        {{~#each variations~}}
+                            <option value="{{variationName}}">{{variationDescription}}</option>
+                        {{~/each~}}
+                    </select>
+
+                        <div>
+                            {{#isTeaser}}
+                                {{#eachVariation}}
+                                    <div class="kss-modifier__container">
+                                        <div class="kss-modifier__name kss-style">
+                                            {{~variationName~}}
+                                        </div>
+                                        <div class="kss-modifier__description kss-style">
+                                            {{~variationDescription~}}
+                                        </div>
+
+                                        <div class="kss-modifier__example kss-wrapper
+                                            {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
+                                        ">
+                                            {{#inclTeaserSize 'S'}}
+                                                <div>Teaser S:</div>
+                                                <div class="row">
+                                                    <div class="col-xxs-6 col-md-4 teaser-wrapper--s">
+                                                        {{{markupWithStyle}}}
+                                                    </div>
+                                                </div>
+                                            {{/inclTeaserSize}}
+                                            {{#inclTeaserSize 'L'}}
+                                                <div>Teaser L:</div>
+                                                <div class="row">
+                                                    <div class="col-md-8 teaser-wrapper--l">
+                                                        {{{markupWithStyle}}}
+                                                    </div>
+                                                </div>
+                                            {{/inclTeaserSize}}
+                                            {{#inclTeaserSize 'XL'}}
+                                                <div>Teaser XL:</div>
+                                                <div class="row">
+                                                    <div class="col-md-8 teaser-wrapper--xl">
+                                                        {{{markupWithStyle}}}
+                                                    </div>
+                                                </div>
+                                            {{/inclTeaserSize}}
+                                            {{#inclTeaserSize 'XXL'}}
+                                                <div>Teaser XXL:</div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 teaser-wrapper--xxl">
+                                                        {{{markupWithStyle}}}
+                                                    </div>
+                                                </div>
+                                            {{/inclTeaserSize}}
+
+                                        </div>
+                                    </div>
+                                {{/eachVariation}}
+                            {{else}}
+                                {{#eachVariation}}
+                                    <div class="kss-modifier__container">
+                                        <div class="kss-modifier__name kss-style">
+                                            {{~variationName~}}
+                                        </div>
+                                        <div class="kss-modifier__description kss-style">
+                                            {{~variationDescription~}}
+                                        </div>
+                                        <div class="kss-modifier__example kss-wrapper
+                                            {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
+                                        ">
+                                            {{{markupWithStyle}}}
+                                        </div>
+                                    </div>
+                                {{/eachVariation}}
+                            {{/isTeaser}}
+
+                        </div>
+
+                    {{/if}}
+
+                </div>
+                <div class="kss-modifier__wrapper">
+                    <div class="kss-modifier__heading">
+                        <span>HTML</span> <span class="kss-modifier__heading--markupPath">{{displayMarkupPath}}</span>
+            <span class="snippet-show-button"><button onclick="KssShowHideMarkup(this);">Show / Hide
+            </button></span>
+                    </div>
+                    <div class="kss-markup kss-style markup-collapsed">
+                        <pre class="prettyprint linenums lang-html"><code
+                                data-language="html">{{{markupEscaped}}} </code></pre>
+                    </div>
+                </div>
+
+            {{/if}} {{!-- if markup --}}
+
+            {{#ifLevel 1}}
+            </div>
+            {{else}}
+                </section>
+            {{/ifLevel}}
+        {{/eachSubSectionQuery}}
+    {{/if}}
+</article>
+
+
+<!-- bower:js -->
+<!-- endbower -->
+
+<script src="js/fleet-info.min.js"></script>
+
+<script src="js/select.js"></script>
+<script src="js/kss.js"></script>
+<script src="js/prettify.js"></script>
+
+
+<script>
+    prettyPrint();
+</script>
+<script>
+    var switchTheme;
+    $(document).ready(function () {
+
+        var switchThemeWaiting;
+
+        switchTheme = function (el) {
+            var mobileStyle,
+                    desktopStyle;
+
+            mobileStyle = $('#kss-breakpoint-mobile');
+            desktopStyle = $('#kss-breakpoint-desktop');
+
+            var mobileHref = mobileStyle.attr("href");
+            mobileStyle.attr("href", mobileStyle.attr("data-toggle-href"));
+            mobileStyle.attr("data-toggle-href", mobileHref);
+
+            var desktopHref = desktopStyle.attr("href");
+            desktopStyle.attr("href", desktopStyle.attr("data-toggle-href"));
+            desktopStyle.attr("data-toggle-href", desktopHref);
+
+            window.clearTimeout(switchThemeWaiting);
+
+            var buttonToggleText = $(el).attr("data-toggle-name");
+
+            $(el).attr("data-toggle-name", $(el).text());
+
+            $(el).text(buttonToggleText);
+
+            $(el).addClass("waiting");
+            switchThemeWaiting = window.setTimeout(function () {
+                new KssStateGenerator;
+                $(el).removeClass("waiting");
+            }, 1000);
+
+        };
+    });
+</script>
+
+{{{scripts}}}
+<script>
+    $(document).ready(function () {
+        //$.pjax.disable();
+    });
+</script>
+{{! This will only be included in the demo page. }}
+{{#if argv.xdemo}}
+    <footer class="kss-github">
+        <!-- https://github.com/blog/273-github-ribbons -->
+        <a href="https://github.com/kss-node/kss-node"><img src="public/github-fork--black.png" alt="Fork me on GitHub"></a>
+    </footer>
+{{/if}}
+
+<!-- Automatically generated using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+
+
+</body>
+
+</html>

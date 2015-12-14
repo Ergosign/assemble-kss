@@ -39,9 +39,19 @@ module.exports = function(grunt) {
 
         assemble: {
             options: {
-                plugins: ['index.js']
+                plugins: ['lib/grunt-assemble-kss.js']
+            },
+            test: {
+                options: {
+                    kss: {
+                        src: "test/fixtures/scss",
+                        src_mask: "*.scss",
+                        overviewMarkdownFile:"styleguide.md",
+                        dest: "test/actual",
+                        template: "test/fixtures/layouts/style-guide-layout.hbs"
+                    }
+                }
             }
-
         },
 
         // Before generating new files, remove any files from previous build.
