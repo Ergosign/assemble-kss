@@ -336,6 +336,49 @@ describe("parsing of comments", function () {
         });
     });
 
+    describe('a comment with one variation consists of classes and state', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function () {
+            commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class.test-class2:hover - testdescr \n\n:hover - hoverState\n:focus - focusState   \nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+        it('should have a multi line description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+        });
+        it('should have a markup', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('markup').and.equal("test.hbs");
+        });
+
+        it('should have variations with states', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('variations');
+            chai.expect(createdTestSection.variations).to.deep.equal([
+                {variationName: ".test-class.test-class2:hover", variationDescription: "testdescr", variationClass: "test-class test-class2 pseudo-class-hover"}
+            ]);
+        });
+    });
+
     describe('a comment with property wrapper-classes', function () {
 
         var commentWithDescription;
