@@ -34,12 +34,7 @@
         pseudo_selectors = ['hover', 'enabled', 'disabled', 'active', 'visited', 'focus', 'checked'];
 
         function KssStateGenerator() {
-            var idx, idxs, pseudos, replaceRule, rule, stylesheet, _i, _len, _len2, _ref, _ref2, newInlineStyleSheet, linkedStyleSheet;
-            pseudos = new RegExp("(\\:" + (pseudo_selectors.join('|\\:')) + ")", "g");
-
-            replaceRule = function (matched, stuff) {
-                return matched.replace(/\:/g, '.pseudo-class-');
-            };
+            var  idxs, stylesheet, _i, _len, _ref, _ref2, newInlineStyleSheet;
 
             //create a new inline style sheet
             var styleEl;
