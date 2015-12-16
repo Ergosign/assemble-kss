@@ -15,7 +15,7 @@
     "files": [
         "lib"
     ],
-    "main": "lib/grunt-assemble-kss.js",
+    "main": "lib/assembleKssPlugin.js",
     "engines": {
         "node": ">= 0.12.0"
     },

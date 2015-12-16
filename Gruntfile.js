@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 
         assemble: {
             options: {
-                plugins: ['lib/grunt-assemble-kss.js']
+                plugins: ['lib/assembleKssPlugin.js']
             },
             test: {
                 options: {

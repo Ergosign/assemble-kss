@@ -1,9 +1,129 @@
-var expect   = require('chai').expect;
+var chai = require('chai');
+var expect = chai.expect;
+var should = chai.should();
 
-var utils  = require('../lib/utils');
+var grunt = require('grunt');
 
-describe("parsing of comments to get correct objects", function() {
-    it('a minimal comment should create a section object', function() {
-        expect(1).to.equal(1);
+var kssCommentsParser = require ('../lib/kssCommentsParser');
+
+describe("parsing of comments", function() {
+
+    var sections;
+
+    beforeEach(function() {
+        sections = {
+            level: 0
+        };
+    });
+
+    describe('a single line comment', function () {
+
+        var minimalComment;
+
+        beforeEach(function() {
+            minimalComment = {
+                comment: '/* Just a Comment */',
+                srcPath:"doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should be ignored', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(minimalComment, sections,grunt);
+
+            createdTestSection.should.equal(-1);
+        });
+    });
+
+    describe('a minimal comment', function () {
+
+        var minimalComment;
+
+        beforeEach(function() {
+            minimalComment = {
+                comment: '/*\nTitle \nStyleguide testSection \n*/',
+                srcPath:"doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should create a section object', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(minimalComment, sections,grunt);
+
+            createdTestSection.should.not.equal(-1);
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(minimalComment, sections,grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(minimalComment, sections,grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a srcPath', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(minimalComment, sections,grunt);
+
+            createdTestSection.should.have.property('srcPath').and.equal("doesNotExist/pathIsJustForTesting");
+        });
+    });
+
+    describe('a comment with description', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function() {
+            commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description \nStyleguide testSection \n*/',
+                srcPath:"doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections,grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections,grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections,grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description");
+        });
+    });
+
+    describe('a comment with multi line description', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function() {
+            commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3 \nStyleguide testSection \n*/',
+                srcPath:"doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a multi line description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections,grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+        });
     });
 });
