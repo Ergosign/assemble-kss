@@ -126,4 +126,11 @@ describe("parsing of comments", function() {
             createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
         });
     });
+
+    describe('a comment with Markup', function(){
+       it('should load inline markup',function(){
+           // pending test below
+
+       });
+    });
 });

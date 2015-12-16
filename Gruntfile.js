@@ -49,6 +49,13 @@ module.exports = function(grunt) {
             }
         },
 
+        watch: {
+            js: {
+                files: '**/*.js',
+                tasks: ['test']
+            }
+        },
+
         assemble: {
             options: {
                 plugins: ['lib/assembleKssPlugin.js']
@@ -68,7 +75,7 @@ module.exports = function(grunt) {
 
         // Before generating new files, remove any files from previous build.
         clean: {
-            actual: ['test/actual/**'],
+            actual: ['test/actual/**']
         }
     });
 
@@ -77,4 +84,7 @@ module.exports = function(grunt) {
 
     // Tests to be run.
     grunt.registerTask('test', ['default', 'mochaTest']);
+
+    // Tests to be run.
+    grunt.registerTask('run-tests', ['test','watch']);
 };
