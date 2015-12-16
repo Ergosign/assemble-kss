@@ -191,7 +191,6 @@ describe("parsing of comments", function () {
 
     });
 
-
     describe('a comment with one variation class', function () {
 
         var commentWithDescription;
@@ -217,6 +216,13 @@ describe("parsing of comments", function () {
             createdTestSection.should.have.property('sectionName').and.equal("testSection");
         });
 
+        it('should have a multi line description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+        });
+
         it('should have a markup', function () {
             var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
             createdTestSection.should.have.property('markup').and.equal("test.hbs");
@@ -229,15 +235,36 @@ describe("parsing of comments", function () {
         });
     });
 
-    describe('a comment with multiline variation variation classes', function () {
+    describe('a comment with multiline variation classes', function () {
 
         var commentWithDescription;
 
         beforeEach(function () {
             commentWithDescription = {
-                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class - testdescr\n.test-class2.test-class--modifier - testdescr2 \nStyleguide testSection \n*/',
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n.test-class - testdescr\n.test-class2.test-class--modifier - testdescr2 \nStyleguide testSection \n*/',
                 srcPath: "doesNotExist/pathIsJustForTesting"
             };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a multi line description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
         });
 
         it('should have a markup', function () {
@@ -245,12 +272,58 @@ describe("parsing of comments", function () {
             createdTestSection.should.have.property('markup').and.equal("test.hbs");
         });
 
-        it('should have a variation', function () {
+        it('should have variations', function () {
             var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
             createdTestSection.should.have.property('variations');
             chai.expect(createdTestSection.variations).to.deep.equal([
                 {variationName: ".test-class", variationDescription: "testdescr", variationClass: "test-class"},
                 {variationName: ".test-class2.test-class--modifier", variationDescription: "testdescr2", variationClass: "test-class2 test-class--modifier"}
+            ]);
+        });
+    });
+
+    describe('a comment with variation classes and states', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function () {
+            commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class - testdescr\n.test-class2 - testdescr2\n:hover - hoverState\n:focus - focusState   \nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+        it('should have a multi line description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+        });
+        it('should have a markup', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('markup').and.equal("test.hbs");
+        });
+
+        it('should have variations with states', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('variations');
+            chai.expect(createdTestSection.variations).to.deep.equal([
+                {variationName: ".test-class", variationDescription: "testdescr", variationClass: "test-class" },
+                {variationName: ".test-class2", variationDescription: "testdescr2", variationClass: "test-class2" },
+                {variationName: ":hover", variationDescription: "hoverState", variationClass: "pseudo-class-hover" },
+                {variationName: ":focus", variationDescription: "focusState", variationClass: "pseudo-class-focus" }
             ]);
         });
     });
