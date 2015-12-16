@@ -13,7 +13,8 @@
     },
     "license": "MIT",
     "files": [
-        "lib"
+        "lib",
+        "support-files"
     ],
     "main": "lib/assembleKssPlugin.js",
     "engines": {
