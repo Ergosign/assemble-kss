@@ -6,7 +6,7 @@
 ## Getting Started
 
 ```sh
-$ npm i grunt-assemble-kss --save
+$ npm i grunt-assemble-kss --save-dev
 ```
 
 Next, register the plugin with Assemble:
@@ -14,16 +14,21 @@ Next, register the plugin with Assemble:
 ```js
 assemble: {
   options: {
-    plugins: ['grunt-assemble-sitemap', 'other/plugins/*']
+    plugins: ['grunt-assemble-kss', 'other/plugins/*'],
+    kss: {
+        src: "test/fixtures/scss",
+        src_mask: "*.scss",
+        overviewMarkdownFile:"styleguide.md",
+        dest: "test/actual",
+        template: "test/fixtures/layouts/style-guide-layout.hbs"
+    }
   }
 }
 ```
 
-Visit the [plugins docs](http://assemble.io/plugins/) for more info or for help getting started.
 
 ## Options
 
-See [sitemaps.org](http://www.sitemaps.org/protocol.html#xmlTagDefinitions) for detail XML tag definitions.
 
 ## Contributing
 
