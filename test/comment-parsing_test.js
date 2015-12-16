@@ -290,7 +290,7 @@ describe("parsing of comments", function () {
         });
     });
 
-    describe('a comment with variation classes and states', function () {
+    describe('a comment with variation classes and states (hover, focus)', function () {
 
         var commentWithDescription;
 
@@ -417,12 +417,104 @@ describe("parsing of comments", function () {
             createdTestSection.should.have.property('markup').and.equal("test.hbs");
         });
 
-        it('should have a property wrapper-classes', function () {
+        it('should have properties', function () {
             var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
             createdTestSection.should.have.property('properties');
             chai.expect(createdTestSection.properties).to.deep.equal(
                 {"wrapper-classes": ["background-dark", "min-height", "overflow"],
                 "weight": ["-12"]}
+            );
+        });
+    });
+
+    describe('a comment with markup, variations, states and properties', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function () {
+            commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\n\n\nMarkup: test.hbs\n.test-class - testdescr\n.test-class2 - testdescr2\n:hover - hoverState\n:focus - focusState \n\nwrapper-classes: background-dark, min-height , overflow \nWeight: -12  \n\n\nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a description', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('description').and.equal("A Test Description");
+        });
+
+        it('should have a markup', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('markup').and.equal("test.hbs");
+        });
+
+        it('should have variations with states', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('variations');
+            chai.expect(createdTestSection.variations).to.deep.equal([
+                {variationName: ".test-class", variationDescription: "testdescr", variationClass: "test-class"},
+                {variationName: ".test-class2", variationDescription: "testdescr2", variationClass: "test-class2"},
+                {variationName: ":hover", variationDescription: "hoverState", variationClass: "pseudo-class-hover"},
+                {variationName: ":focus", variationDescription: "focusState", variationClass: "pseudo-class-focus"}
+            ]);
+        });
+
+        it('should have properties', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('properties');
+            chai.expect(createdTestSection.properties).to.deep.equal(
+                {"wrapper-classes": ["background-dark", "min-height", "overflow"],
+                    "weight": ["-12"]}
+            );
+        });
+    });
+
+    describe('a comment with only title, name and property', function () {
+
+        var commentWithDescription;
+
+        beforeEach(function () {
+            commentWithDescription = {
+                comment: '/*\nTitle  \nWeight: -12 \nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+        });
+
+        it('should have a title', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function () {
+
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a property', function () {
+            var createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+            createdTestSection.should.have.property('properties');
+            chai.expect(createdTestSection.properties).to.deep.equal(
+                {"weight": ["-12"]}
             );
         });
     });
