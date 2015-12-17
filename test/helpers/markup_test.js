@@ -45,4 +45,12 @@ describe('the {{markupWithStyle}}', function () {
         template(context).should.equal('<a class="btn [test modifier]" href=""></a>');
     });
 
+    it('should work with an context without markupContext', function () {
+        var template = Handlebars.compile('{{{markupWithStyle \'[test modifier]\'}}}');
+        context = {
+            markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>'
+        };
+        template(context).should.equal('<a class="btn [test modifier]" href=""></a>');
+    });
+
 });
