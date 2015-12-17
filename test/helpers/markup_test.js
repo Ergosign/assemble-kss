@@ -30,7 +30,9 @@ describe('Markup With Style', function() {
                 }
             };
             var template = Handlebars.compile(source);
-            template(context).should.equal(encodeURI('<a class="btn btn--grey" href="more.html">read more</a>'));
+            var returnedHTML = template(context);
+            var expectedHTML = Handlebars.Utils.escapeExpression('<a class="btn btn--grey" href="more.html">read more</a>');
+            returnedHTML.should.equal(expectedHTML);
         });
     });
 });
@@ -52,7 +54,11 @@ describe('Markup Escaped', function() {
                 }
             };
             var template = Handlebars.compile(source);
-            template(context).should.equal(encodeURI('<a class="btn [modifier_class]" href="more.html">read more</a>'));
+            var returnedHTML = template(context);
+            var expectedHTML = Handlebars.Utils.escapeExpression('<a class="btn [modifier_class]" href="more.html">read more</a>');
+            expectedHTML = Handlebars.Utils.escapeExpression(expectedHTML);
+            returnedHTML.should.equal(expectedHTML);
+
         });
     });
 });
