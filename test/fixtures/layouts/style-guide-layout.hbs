@@ -75,19 +75,7 @@
                         <span class="kss-title__permalink-hash">#permalink</span>
                     </a>
                 </h{{level}}>
-                {{!--
-                                                {{#if parameters}}
-                                                    <ul class="kss-parameters">
-                                                        {{#eachParameter}}
-                                                            <li class="kss-parameters__item">
-                                                                <code class="kss-parameters__name">{{name}}</code>
 
-                                                                <div class="kss-parameters__description">{{{description}}}</div>
-                                                            </li>
-                                                        {{/eachParameter}}
-                                                    </ul>
-                                                {{/if}}
-                --}}
                 {{#if description}}
                     <div class="kss-description">
                         {{#markdown}}{{{description}}}{{/markdown}}
@@ -112,7 +100,7 @@
                     {{~#if variations~}}
                         Variations: <select class="modifier-select">
                         <option value="-">Show Default</option>
-                        <option value="all">All Variantions</option>
+                        <option value="all" selected>All Variantions</option>
                         {{~#each variations~}}
                             <option value="{{variationName}}">{{variationDescription}}</option>
                         {{~/each~}}

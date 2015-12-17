@@ -8,7 +8,7 @@ var Handlebars = require('handlebars');
 require('../../lib/handlebars-helpers/markupHelpers.js').register(Handlebars, {});
 
 
-describe('the {{markupWithStyle context}}', function () {
+describe('the {{markupWithStyle}}', function () {
 
     var context;
 

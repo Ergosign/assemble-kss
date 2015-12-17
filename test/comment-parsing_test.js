@@ -210,7 +210,38 @@ describe("parsing of comments", function () {
         });
     });
 
-    describe('a comment with variation classes and states (hover, focus)', function () {
+    describe('a comment with variation classes and states (hover, focus) in one line', function () {
+        beforeEach(function () {
+            var commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class2.test-class--modifier - testdescr2\n:focus.test-class3 - focusState \n.test-class2.test-class--modifier:active - testdescr2   \nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+            createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+        });
+
+        it('should have a title', function () {
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+        it('should have a sectionName', function () {
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+        it('should have a multi line description', function () {
+            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+        });
+        it('should have a markup', function () {
+            createdTestSection.should.have.property('markup').and.equal("test.hbs");
+        });
+
+        it('should have variations with states', function () {
+            createdTestSection.should.have.property('variations').to.deep.equal([
+                {variationName: ".test-class2.test-class--modifier", variationDescription: "testdescr2", variationClass: "test-class2 test-class--modifier"},
+                {variationName: ":focus.test-class3", variationDescription: "focusState", variationClass: "pseudo-class-focus test-class3"},
+                {variationName: ".test-class2.test-class--modifier:active", variationDescription: "testdescr2", variationClass: "test-class2 test-class--modifier pseudo-class-active"}
+            ]);
+        });
+    });
+
+    describe('a comment with one variation and variation classes with states (hover, focus) in one line', function () {
         beforeEach(function () {
             var commentWithDescription = {
                 comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class - testdescr\n:hover - hoverState\n.test-class2.test-class--modifier - testdescr2\n:focus.test-class3 - focusState \n.test-class2.test-class--modifier:active - testdescr2   \nStyleguide testSection \n*/',
@@ -421,9 +452,5 @@ describe("parsing of comments", function () {
         });
     });
 
-    describe('a pending test', function () {
-
-        it("pending test description")
-    });
 
 });
