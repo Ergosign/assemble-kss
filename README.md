@@ -2,6 +2,7 @@
 
 > KSS Style Guide Generator plugin for Assemble
 
+[![Build Status](https://travis-ci.org/Ergosign/grunt-assemble-kss.svg?branch=master)](https://travis-ci.org/Ergosign/grunt-assemble-kss)
 
 ## Getting Started
 
