@@ -26,11 +26,6 @@
     </header>
     <nav class="kss-nav">
         <ul class="kss-nav__menu">
-            {{!--
-                        <li class="kss-nav__menu-item">
-                            <a href="././"><span class="kss-nav__name kss-section-header">Overview</span></a>
-                        </li>
-            --}}
             {{#eachSectionRoot page.sections}}
                 <li class="kss-nav__menu-item kss-menu-section">
                     <a href="{{sectionName}}.html"
@@ -112,42 +107,7 @@
                     <div class="kss-modifier__example kss-wrapper
                         {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
                      ">
-                        {{#isTeaser}}
-                            {{#inclTeaserSize 'S'}}
-                                <div>Teaser S:</div>
-                                <div class="row">
-                                    <div class="col-xxs-6 col-md-4 teaser-wrapper--s">
-                                        {{{markupWithStyle}}}
-                                    </div>
-                                </div>
-                            {{/inclTeaserSize}}
-                            {{#inclTeaserSize 'L'}}
-                                <div>Teaser L:</div>
-                                <div class="row">
-                                    <div class="col-md-8 teaser-wrapper--l">
-                                        {{{markupWithStyle}}}
-                                    </div>
-                                </div>
-                            {{/inclTeaserSize}}
-                            {{#inclTeaserSize 'XL'}}
-                                <div>Teaser XL:</div>
-                                <div class="row">
-                                    <div class="col-md-8 teaser-wrapper--xl">
-                                        {{{markupWithStyle}}}
-                                    </div>
-                                </div>
-                            {{/inclTeaserSize}}
-                            {{#inclTeaserSize 'XXL'}}
-                                <div>Teaser XXL:</div>
-                                <div class="row">
-                                    <div class="col-xs-12 teaser-wrapper--xxl">
-                                        {{{markupWithStyle}}}
-                                    </div>
-                                </div>
-                            {{/inclTeaserSize}}
-                        {{else}}
-                            {{{markupWithStyle}}}
-                        {{/isTeaser}}
+                        {{{markupWithStyle}}}
                     </div>
                     {{~#if variations~}}
                         Variations: <select class="modifier-select">
@@ -159,75 +119,22 @@
                     </select>
 
                         <div>
-                            {{#isTeaser}}
-                                {{#eachVariation}}
-                                    <div class="kss-modifier__container">
-                                        <div class="kss-modifier__name kss-style">
-                                            {{~variationName~}}
-                                        </div>
-                                        <div class="kss-modifier__description kss-style">
-                                            {{~variationDescription~}}
-                                        </div>
-
-                                        <div class="kss-modifier__example kss-wrapper
+                            {{#eachVariation}}
+                                <div class="kss-modifier__container">
+                                    <div class="kss-modifier__name kss-style">
+                                        {{~variationName~}}
+                                    </div>
+                                    <div class="kss-modifier__description kss-style">
+                                        {{~variationDescription~}}
+                                    </div>
+                                    <div class="kss-modifier__example kss-wrapper
                                             {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
                                         ">
-                                            {{#inclTeaserSize 'S'}}
-                                                <div>Teaser S:</div>
-                                                <div class="row">
-                                                    <div class="col-xxs-6 col-md-4 teaser-wrapper--s">
-                                                        {{{markupWithStyle}}}
-                                                    </div>
-                                                </div>
-                                            {{/inclTeaserSize}}
-                                            {{#inclTeaserSize 'L'}}
-                                                <div>Teaser L:</div>
-                                                <div class="row">
-                                                    <div class="col-md-8 teaser-wrapper--l">
-                                                        {{{markupWithStyle}}}
-                                                    </div>
-                                                </div>
-                                            {{/inclTeaserSize}}
-                                            {{#inclTeaserSize 'XL'}}
-                                                <div>Teaser XL:</div>
-                                                <div class="row">
-                                                    <div class="col-md-8 teaser-wrapper--xl">
-                                                        {{{markupWithStyle}}}
-                                                    </div>
-                                                </div>
-                                            {{/inclTeaserSize}}
-                                            {{#inclTeaserSize 'XXL'}}
-                                                <div>Teaser XXL:</div>
-                                                <div class="row">
-                                                    <div class="col-xs-12 teaser-wrapper--xxl">
-                                                        {{{markupWithStyle}}}
-                                                    </div>
-                                                </div>
-                                            {{/inclTeaserSize}}
-
-                                        </div>
+                                        {{{markupWithStyle}}}
                                     </div>
-                                {{/eachVariation}}
-                            {{else}}
-                                {{#eachVariation}}
-                                    <div class="kss-modifier__container">
-                                        <div class="kss-modifier__name kss-style">
-                                            {{~variationName~}}
-                                        </div>
-                                        <div class="kss-modifier__description kss-style">
-                                            {{~variationDescription~}}
-                                        </div>
-                                        <div class="kss-modifier__example kss-wrapper
-                                            {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
-                                        ">
-                                            {{{markupWithStyle}}}
-                                        </div>
-                                    </div>
-                                {{/eachVariation}}
-                            {{/isTeaser}}
-
+                                </div>
+                            {{/eachVariation}}
                         </div>
-
                     {{/if}}
 
                 </div>
@@ -258,7 +165,7 @@
 <!-- bower:js -->
 <!-- endbower -->
 
-<script src="js/fleet-info.min.js"></script>
+<script src="js/project.min.js"></script>
 
 <script src="js/select.js"></script>
 <script src="js/kss.js"></script>
@@ -308,21 +215,6 @@
 </script>
 
 {{{scripts}}}
-<script>
-    $(document).ready(function () {
-        //$.pjax.disable();
-    });
-</script>
-{{! This will only be included in the demo page. }}
-{{#if argv.xdemo}}
-    <footer class="kss-github">
-        <!-- https://github.com/blog/273-github-ribbons -->
-        <a href="https://github.com/kss-node/kss-node"><img src="public/github-fork--black.png" alt="Fork me on GitHub"></a>
-    </footer>
-{{/if}}
-
-<!-- Automatically generated using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
-
 
 </body>
 

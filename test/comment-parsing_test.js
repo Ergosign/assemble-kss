@@ -213,7 +213,7 @@ describe("parsing of comments", function () {
     describe('a comment with variation classes and states (hover, focus)', function () {
         beforeEach(function () {
             var commentWithDescription = {
-                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class - testdescr\n.test-class2 - testdescr2\n:hover - hoverState\n:focus - focusState   \nStyleguide testSection \n*/',
+                comment: '/*\nTitle\nA Test Description\nDescription Line 2\nLine 3\nMarkup: test.hbs\n\n.test-class - testdescr\n:hover - hoverState\n.test-class2.test-class--modifier - testdescr2\n:focus.test-class3 - focusState \n.test-class2.test-class--modifier:active - testdescr2   \nStyleguide testSection \n*/',
                 srcPath: "doesNotExist/pathIsJustForTesting"
             };
             createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
@@ -235,9 +235,10 @@ describe("parsing of comments", function () {
         it('should have variations with states', function () {
             createdTestSection.should.have.property('variations').to.deep.equal([
                 {variationName: ".test-class", variationDescription: "testdescr", variationClass: "test-class"},
-                {variationName: ".test-class2", variationDescription: "testdescr2", variationClass: "test-class2"},
                 {variationName: ":hover", variationDescription: "hoverState", variationClass: "pseudo-class-hover"},
-                {variationName: ":focus", variationDescription: "focusState", variationClass: "pseudo-class-focus"}
+                {variationName: ".test-class2.test-class--modifier", variationDescription: "testdescr2", variationClass: "test-class2 test-class--modifier"},
+                {variationName: ":focus.test-class3", variationDescription: "focusState", variationClass: "pseudo-class-focus test-class3"},
+                {variationName: ".test-class2.test-class--modifier:active", variationDescription: "testdescr2", variationClass: "test-class2 test-class--modifier pseudo-class-active"}
             ]);
         });
     });
