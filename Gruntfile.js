@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         mochaTest: {
             tests: {
                 options: {
-                    reporter: 'progress'
+                    reporter: 'spec'
                 },
                 src: ['test/**/*_test.js']
             }
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: '**/*.js',
-                tasks: ['test']
+                tasks: ['default']
             }
         },
 
@@ -80,10 +80,7 @@ module.exports = function(grunt) {
     });
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'clean', 'assemble']);
-
-    // Tests to be run.
-    grunt.registerTask('test', ['default', 'mochaTest']);
+    grunt.registerTask('default', ['jshint', 'clean', 'assemble','mochaTest']);
 
     // Tests to be run.
     grunt.registerTask('run-tests', ['test','watch']);
