@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     kss: {
                         src: "test/fixtures/scss",
                         src_mask: "*.scss",
-                        overviewMarkdownFile:"styleguide.md",
+                        overviewMarkdownFile:"test/fixtures/scss/styleguide.md",
                         dest: "test/actual",
                         template: "test/fixtures/layouts/style-guide-layout.hbs"
                     }
