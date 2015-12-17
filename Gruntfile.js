@@ -84,5 +84,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['jshint', 'clean', 'assemble','mochaTest']);
 
     // Tests to be run.
-    grunt.registerTask('run-tests', ['test','watch']);
+    grunt.registerTask('run-tests', ['default','watch']);
 };
