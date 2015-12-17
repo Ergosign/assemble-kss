@@ -69,7 +69,7 @@
 </div>
                     </div>Variations: <select class="modifier-select">
                         <option value="-">Show Default</option>
-                        <option value="all">All Variantions</option><option value=".testVariation">to test</option><option value=".text:hover">tricky</option></select>
+                        <option value="all">All Variantions</option><option value=".testVariation">to test</option><option value=":hover">with hover</option><option value=":focus">with focus</option><option value=".text:hover">tricky</option></select>
 
                         <div>
                                     <div class="kss-modifier__container">
@@ -77,6 +77,24 @@
                                         <div class="kss-modifier__description kss-style">to test</div>
                                         <div class="kss-modifier__example kss-wrapper">
                                             <div class="doesthiswork testVariation">
+    <a href="#12345">BIG TEXT</a>
+</div>
+                                        </div>
+                                    </div>
+                                    <div class="kss-modifier__container">
+                                        <div class="kss-modifier__name kss-style">:hover</div>
+                                        <div class="kss-modifier__description kss-style">with hover</div>
+                                        <div class="kss-modifier__example kss-wrapper">
+                                            <div class="doesthiswork hover">
+    <a href="#12345">BIG TEXT</a>
+</div>
+                                        </div>
+                                    </div>
+                                    <div class="kss-modifier__container">
+                                        <div class="kss-modifier__name kss-style">:focus</div>
+                                        <div class="kss-modifier__description kss-style">with focus</div>
+                                        <div class="kss-modifier__example kss-wrapper">
+                                            <div class="doesthiswork focus">
     <a href="#12345">BIG TEXT</a>
 </div>
                                         </div>
@@ -104,7 +122,7 @@
                     <div class="kss-markup kss-style markup-collapsed">
                         <pre class="prettyprint linenums lang-html"><code
                                 data-language="html">&lt;div class=&quot;doesthiswork [modifier_classs]&quot;&gt;
-    &lt;a href=&quot;#12345&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#12345&quot;&gt;BIG TEXT&lt;/a&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
