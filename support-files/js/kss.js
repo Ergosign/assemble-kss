@@ -47,7 +47,7 @@
 
                 for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                     stylesheet = _ref[_i];
-                    if (stylesheet.href && stylesheet.href.indexOf(document.domain) >= 0 && stylesheet.href.indexOf("style.css") >= 0) {
+                    if (stylesheet.href && stylesheet.href.indexOf(document.domain) >= 0 && stylesheet.href.indexOf("styles.css") >= 0) {
                         idxs = [];
                         _ref2 = stylesheet.cssRules;
                         newInlineStyleSheet += _addRules(_ref2);
