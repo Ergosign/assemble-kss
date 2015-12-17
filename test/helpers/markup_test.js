@@ -4,61 +4,45 @@ var expect = chai.expect;
 var should = chai.should();
 var Handlebars = require('handlebars');
 
-var helpers = path.join.bind(__dirname, '../../lib/handlebars-helpers');
-
 // Local helpers
 require('../../lib/handlebars-helpers/markupHelpers.js').register(Handlebars, {});
 
 
-var options = {
-    assets: 'assets/'
-};
+describe('the {{markupWithStyle context}}', function () {
 
-describe('Markup With Style', function() {
+    var context;
 
-    describe('{{markupWithStyle context}}', function() {
-
-        it('should return markup with style', function() {
-            var source = '{{markupWithStyle context options}}';
-
-            var context = {
-                markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>',
-                markupContext: {
-                    modifier_class: "btn--grey",
-                    actionText: "read more",
-                    actionTarget: "more.html"
-                }
-            };
-            var template = Handlebars.compile(source);
-            var returnedHTML = template(context);
-            var expectedHTML = Handlebars.Utils.escapeExpression('<a class="btn btn--grey" href="more.html">read more</a>');
-            returnedHTML.should.equal(expectedHTML);
-        });
+    beforeEach(function () {
+        context = {
+            markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>',
+            markupContext: {
+                modifier_class: "btn--grey",
+                actionText: "read more",
+                actionTarget: "more.html"
+            }
+        };
     });
-});
 
-
-describe('Markup Escaped', function() {
-
-    describe('{{markupEscaped context}}', function() {
-
-        it('should return markup with style', function() {
-            var source = '{{markupEscaped context options}}';
-
-            var context = {
-                markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>',
-                markupContext: {
-                    modifier_class: "btn--grey",
-                    actionText: "read more",
-                    actionTarget: "more.html"
-                }
-            };
-            var template = Handlebars.compile(source);
-            var returnedHTML = template(context);
-            var expectedHTML = Handlebars.Utils.escapeExpression('<a class="btn [modifier_class]" href="more.html">read more</a>');
-            expectedHTML = Handlebars.Utils.escapeExpression(expectedHTML);
-            returnedHTML.should.equal(expectedHTML);
-
-        });
+    it('should return markup with style', function () {
+        var template = Handlebars.compile('{{{markupWithStyle}}}');
+        template(context).should.equal('<a class="btn btn--grey" href="more.html">read more</a>');
     });
+
+    it('should use a parameter to replace modidifer class', function () {
+        var template = Handlebars.compile('{{{markupWithStyle \'[test modifier]\'}}}');
+        template(context).should.equal('<a class="btn [test modifier]" href="more.html">read more</a>');
+    });
+
+    it('should work with an empty context', function () {
+        var template = Handlebars.compile('{{{markupWithStyle}}}');
+        context.markupContext = {};
+        template(context).should.equal('<a class="btn " href=""></a>');
+    });
+
+    it('should work with an empty context but with modidifer', function () {
+        var template = Handlebars.compile('{{{markupWithStyle \'[test modifier]\'}}}');
+        context.markupContext = {};
+        template(context).should.equal('<a class="btn [test modifier]" href=""></a>');
+    });
+
 });

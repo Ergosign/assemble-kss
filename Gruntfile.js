@@ -58,7 +58,8 @@ module.exports = function(grunt) {
 
         assemble: {
             options: {
-                plugins: ['lib/assembleKssPlugin.js']
+                plugins: ['lib/assembleKssPlugin.js'],
+                partials:['test/fixtures/scss/**/*.hbs']
             },
             test: {
                 options: {
