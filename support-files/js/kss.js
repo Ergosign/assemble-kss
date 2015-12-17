@@ -24,7 +24,6 @@
                 newInlineStyleSheet += (rule.cssText);
                 pseudos.lastIndex = 0;
             }
-            console.log("style " + newInlineStyleSheet);
             return newInlineStyleSheet;
         };
 
