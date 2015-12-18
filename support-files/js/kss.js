@@ -66,6 +66,10 @@
                     newInlineStyleSheet = (newInlineStyleSheet.replace(font, "included/font/"));
                 }
 
+                // set correct path for imgages and fonts
+                var fixPath =  new RegExp("\.\.\/(img|font)\/", "g");
+                newInlineStyleSheet = (newInlineStyleSheet.replace(fixPath, ""));
+
                 styleEl.innerHTML = newInlineStyleSheet;
 
 
