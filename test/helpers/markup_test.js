@@ -54,3 +54,31 @@ describe('the {{markupWithStyle}}', function () {
     });
 
 });
+
+
+describe('{{displayMarkupPath}}', function () {
+
+    it('should return empty string', function () {
+        var template = Handlebars.compile('{{{displayMarkupPath}}}');
+        template(context).should.equal('');
+    });
+
+    it('should return empty String', function () {
+        context =  {
+            markup: '<a href="test">test</a>'
+        };
+
+        var template = Handlebars.compile('{{{displayMarkupPath}}}');
+        template(context).should.equal('');
+    });
+
+    it('should return markupPath', function () {
+        context =  {
+            markup: "test.hbs"
+        };
+
+        var template = Handlebars.compile('{{{displayMarkupPath}}}');
+        template(context).should.equal('(test.hbs)');
+    });
+
+});
