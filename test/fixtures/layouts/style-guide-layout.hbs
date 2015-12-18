@@ -99,8 +99,8 @@
                     </div>
                     {{~#if variations~}}
                         Variations: <select class="modifier-select">
-                        <option value="-">Show Default</option>
-                        <option value="all" selected >All Variations</option>
+                        <option value="-">No Variations</option>
+                        <option value="all">All Variations</option>
                         {{~#each variations~}}
                             <option value="{{variationName}}">{{variationDescription}}</option>
                         {{~/each~}}

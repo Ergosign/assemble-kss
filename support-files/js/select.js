@@ -20,7 +20,7 @@
 $(document).ready(function()
 {
     var modifierContainer = $('.modifier-select').next('div').find('.kss-modifier__container');
-    //modifierContainer.hide();
+    modifierContainer.hide();
     $('.kss-modifier__wrapper .modifier-select').change(function(ev)
     {
         var selector = $(this).val();
