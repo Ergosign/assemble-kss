@@ -33,7 +33,7 @@ $(document).ready(function()
         else
         {
             console.log("open " + selector);
-            modifierContainer.hide();
+            $(this).next('div').children().hide();
             //$(this).next('div').find(selector).parents('.kss-modifier__container').show();
             var idx = this.selectedIndex;
             if(idx > 1)
