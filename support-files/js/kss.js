@@ -54,21 +54,8 @@
                     }
                 }
 
-                var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-                var is_ie = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-
-                if (is_firefox || is_ie) {
-                    var images = new RegExp("\.\.\/img\/", "g");
-                    var font = new RegExp("\.\.\/font\/", "g");
-
-                    //console.log(newInlineStyleSheet,newInlineStyleSheet.match(images));
-                    newInlineStyleSheet = (newInlineStyleSheet.replace(images, "included/img/"));
-                    newInlineStyleSheet = (newInlineStyleSheet.replace(font, "included/font/"));
-                }
-
                 // set correct path for imgages and fonts
-                var fixPath =  new RegExp("\.\.\/(img|font)\/", "g");
-                newInlineStyleSheet = (newInlineStyleSheet.replace(fixPath, ""));
+                newInlineStyleSheet = (newInlineStyleSheet.replace(/\.\.\//g, ''));
 
                 styleEl.innerHTML = newInlineStyleSheet;
 
