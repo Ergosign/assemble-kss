@@ -14,6 +14,7 @@ describe('the {{markupWithStyle}}', function () {
 
     beforeEach(function () {
         context = {
+            srcPath: '/testPath/',
             markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>',
             markupContext: {
                 modifier_class: "btn--grey",
@@ -48,6 +49,7 @@ describe('the {{markupWithStyle}}', function () {
     it('should work with an context without markupContext', function () {
         var template = Handlebars.compile('{{{markupWithStyle \'[test modifier]\'}}}');
         context = {
+            srcPath: '/testPath/',
             markup: '<a class="btn {{modifier_class}}" href="{{actionTarget}}">{{actionText}}</a>'
         };
         template(context).should.equal('<a class="btn [test modifier]" href=""></a>');
@@ -74,11 +76,12 @@ describe('{{displayMarkupPath}}', function () {
 
     it('should return markupPath', function () {
         context =  {
+            srcPath: '/testPath/',
             markup: "test.hbs"
         };
 
         var template = Handlebars.compile('{{{displayMarkupPath}}}');
-        template(context).should.equal('(test.hbs)');
+        template(context).should.equal('/testPath/test.hbs');
     });
 
 });
