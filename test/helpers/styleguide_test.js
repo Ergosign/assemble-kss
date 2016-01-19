@@ -258,7 +258,7 @@ describe('Styleguide Helper Tests', function () {
                 {
                     variationName: ".test-class",
                     variationDescription: "testmodifier",
-                    variationClass: "test-class"
+                    variationClass: ["test-class"]
                 }
             ];
 
@@ -272,12 +272,12 @@ describe('Styleguide Helper Tests', function () {
                 {
                     variationName: ".test-class",
                     variationDescription: "testmodifier",
-                    variationClass: "test-class"
+                    variationClass: ["test-class"]
                 },
                 {
                     variationName: ".test-class2",
                     variationDescription: "testmodifier2",
-                    variationClass: "test-class2"
+                    variationClass: ["test-class2"]
                 }
             ];
 
@@ -291,12 +291,12 @@ describe('Styleguide Helper Tests', function () {
                 {
                     variationName: ".test-class",
                     variationDescription: "testmodifier",
-                    variationClass: "test-class"
+                    variationClass: ["test-class"]
                 },
                 {
                     variationName: ".test-class2",
                     variationDescription: "testmodifier2",
-                    variationClass: "test-class2"
+                    variationClass: ["test-class2"]
                 }
             ];
 
