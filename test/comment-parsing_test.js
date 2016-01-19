@@ -571,4 +571,57 @@ describe("parsing of comments", function()
         });
     });
 
+    describe('a comment with angular-markup, variations, states and angular-properties', function()
+    {
+        beforeEach(function()
+        {
+            var commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\n\nangular-markup: test.html\n\n.test-class - testdescr\n.test-class2 - testdescr2\n:hover - hoverState\n:focus - focusState \n\nangular-wrapper-markup: test,test\nwrapper-classes: background-dark, min-height , overflow \nWeight: -12  \n\n\nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+            createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+        });
+
+        it('should have a title', function()
+        {
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function()
+        {
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a description', function()
+        {
+            createdTestSection.should.have.property('description').and.equal("A Test Description");
+        });
+
+        it('should have a angular-markup', function()
+        {
+            createdTestSection.should.have.property('angularMarkup').and.equal("test.html");
+        });
+
+        it('should have variations with states', function()
+        {
+            createdTestSection.should.have.property('variations').to.deep.equal([
+                {variationName: ".test-class", variationDescription: "testdescr", variationClass: ["test-class"]},
+                {variationName: ".test-class2", variationDescription: "testdescr2", variationClass: ["test-class2"]},
+                {variationName: ":hover", variationDescription: "hoverState", variationClass: ["pseudo-class-hover"]},
+                {variationName: ":focus", variationDescription: "focusState", variationClass: ["pseudo-class-focus"]}
+            ]);
+        });
+
+        it('should have properties', function()
+        {
+            createdTestSection.should.have.property('properties').to.deep.equal(
+                {
+                    "angular-wrapper-markup": ["test" , "test"],
+                    "wrapper-classes": ["background-dark", "min-height", "overflow"],
+                    "weight":          ["-12"]
+                }
+            );
+        });
+    });
+
 });
