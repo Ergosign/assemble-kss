@@ -138,6 +138,19 @@
                     </div>
                 </div>
 
+            {{else}}
+                {{#if angularMarkup}}
+                    <styleguide-angular-component variations='{{stringify variations}}' {{#if angularContext}}directive-scope='{{stringify angularContext}}'{{/if}}>
+                        {{#if properties.angular-wrapper}}
+                            <html-wrapper>
+                                <xmp>{{{properties.angular-wrapper.[0]}}}</xmp>
+                            </html-wrapper>
+                        {{/if}}
+                        <directive-markup>
+                            <xmp>{{{angularMarkup}}}</xmp>
+                        </directive-markup>
+                    </styleguide-angular-component>
+                {{/if}}
             {{/if}} {{!-- if markup --}}
 
             {{#ifLevel 1}}
