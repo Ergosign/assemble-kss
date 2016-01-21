@@ -671,4 +671,32 @@ describe("parsing of comments", function()
         });
     });
 
+    describe('a comment with angular-markup', function()
+    {
+        beforeEach(function()
+        {
+            var commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\n\nangular-markup: test.html\n\nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+            createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+        });
+
+        it('should have a title', function()
+        {
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function()
+        {
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a description', function()
+        {
+            createdTestSection.should.have.property('description').and.equal("A Test Description");
+        });
+
+    });
+
 });
