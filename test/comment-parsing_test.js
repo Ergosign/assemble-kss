@@ -626,4 +626,49 @@ describe("parsing of comments", function()
         });
     });
 
+    describe('a comment with angular-markup,angular-properties', function()
+    {
+        beforeEach(function()
+        {
+            var commentWithDescription = {
+                comment: '/*\nTitle\nA Test Description\n\nangular-markup: test.html\n\nangular-wrapper: test,test\nwrapper-classes: background-dark, min-height , overflow \nWeight: -12  \n\n\nStyleguide testSection \n*/',
+                srcPath: "doesNotExist/pathIsJustForTesting"
+            };
+            createdTestSection = kssCommentsParser.getSectionObjectOfKssComment(commentWithDescription, sections, grunt);
+        });
+
+        it('should have a title', function()
+        {
+            createdTestSection.should.have.property('sectionTitle').and.equal("Title");
+        });
+
+        it('should have a sectionName', function()
+        {
+            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+        });
+
+        it('should have a description', function()
+        {
+            createdTestSection.should.have.property('description').and.equal("A Test Description");
+        });
+
+        /*
+         cannot be tested here because the test.html sourcefile does not exist
+         it('should have a angular-markup', function()
+         {
+         createdTestSection.should.have.property('angularMarkup');
+         });*/
+
+        it('should have properties', function()
+        {
+            createdTestSection.should.have.property('properties').to.deep.equal(
+                {
+                    "angular-wrapper": ["test" , "test"],
+                    "wrapper-classes": ["background-dark", "min-height", "overflow"],
+                    "weight":          ["-12"]
+                }
+            );
+        });
+    });
+
 });
