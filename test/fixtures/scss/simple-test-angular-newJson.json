@@ -1,0 +1,10 @@
+{
+    "testValue":"ANGULAR NEW JSON",
+    "customize": true,
+    "widget": {
+        "size": "m",
+        "icon": "icon-alert",
+        "topText": "Toptext",
+        "bottomText": "bottom text"
+    }
+}
