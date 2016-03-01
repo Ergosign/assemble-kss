@@ -130,7 +130,7 @@ describe("parsing of comments", function()
 
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
 
         it('should have a markup', function()
@@ -158,7 +158,7 @@ describe("parsing of comments", function()
 
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
 
         it('should have a markup', function()
@@ -191,7 +191,7 @@ describe("parsing of comments", function()
 
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
 
         it('should have a markup', function()
@@ -232,7 +232,7 @@ describe("parsing of comments", function()
 
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
 
         it('should have a markup', function()
@@ -278,7 +278,7 @@ describe("parsing of comments", function()
         });
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
         it('should have a markup', function()
         {
@@ -328,7 +328,7 @@ describe("parsing of comments", function()
         });
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
         it('should have a markup', function()
         {
@@ -380,7 +380,7 @@ describe("parsing of comments", function()
         });
         it('should have a multi line description', function()
         {
-            createdTestSection.should.have.property('description').and.equal("A Test Description\nDescription Line 2\nLine 3");
+            createdTestSection.should.have.property('description').and.equal("A Test Description  \nDescription Line 2  \nLine 3");
         });
         it('should have a markup', function()
         {
