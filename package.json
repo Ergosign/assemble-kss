@@ -1,7 +1,7 @@
 {
   "name": "grunt-assemble-kss",
   "description": "KSS Style Guide Generator plugin for Assemble",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "homepage": "https://ergosign.github.io/grunt-assemble-kss.",
   "author": "Ergosign (http://ergosign.de)",
   "repository": {
