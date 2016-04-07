@@ -59,7 +59,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a srcPath', function()
@@ -86,7 +86,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -186,7 +186,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a multi line description', function()
@@ -227,7 +227,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a multi line description', function()
@@ -274,7 +274,7 @@ describe("parsing of comments", function()
         });
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
         it('should have a multi line description', function()
         {
@@ -324,7 +324,7 @@ describe("parsing of comments", function()
         });
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
         it('should have a multi line description', function()
         {
@@ -376,7 +376,7 @@ describe("parsing of comments", function()
         });
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
         it('should have a multi line description', function()
         {
@@ -424,7 +424,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -465,7 +465,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -507,7 +507,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -560,7 +560,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a property', function()
@@ -589,7 +589,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -644,7 +644,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
@@ -689,7 +689,7 @@ describe("parsing of comments", function()
 
         it('should have a sectionName', function()
         {
-            createdTestSection.should.have.property('sectionName').and.equal("testSection");
+            createdTestSection.should.have.property('sectionName').and.equal("testsection");
         });
 
         it('should have a description', function()
