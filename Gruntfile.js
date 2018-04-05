@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                 curly: true,
                 eqeqeq: true,
                 immed: true,
-                latedef: true,
+                latedef: "nofunc",
                 newcap: true,
                 noarg: true,
                 sub: true,
@@ -68,7 +68,8 @@ module.exports = function(grunt) {
                         src_mask: "*.scss",
                         overviewMarkdownFile:"test/fixtures/scss/styleguide.md",
                         dest: "test/actual",
-                        template: "test/fixtures/layouts/style-guide-layout.hbs"
+                        template: "test/fixtures/layouts/style-guide-layout-iframe.hbs",
+                        templateIframe: "test/fixtures/layouts/iframe-content.hbs"
                     }
                 }
             }
