@@ -25,7 +25,8 @@ assemble: {
         src_mask: "*.scss",
         overviewMarkdownFile:"styleguide.md",
         dest: "test/actual",
-        template: "test/fixtures/layouts/style-guide-layout.hbs"
+        template: "test/fixtures/layouts/style-guide-layout.hbs",
+        templateIframe: "test/fixtures/layouts/iframe-content.hbs"
     }
   }
 }
