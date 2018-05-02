@@ -68,6 +68,7 @@ module.exports = function(grunt) {
                         src_mask: "*.scss",
                         overviewMarkdownFile:"test/fixtures/scss/styleguide.md",
                         dest: "test/actual",
+                        dataDestination: 'test/actual/data',
                         template: "test/fixtures/layouts/style-guide-layout-iframe.hbs",
                         templateIframe: "test/fixtures/layouts/iframe-content.hbs"
                     }

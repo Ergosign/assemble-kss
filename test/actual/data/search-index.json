@@ -1,0 +1,322 @@
+{
+    "index": {
+        "sectionName": "index",
+        "sectionTitle": "Overview",
+        "description": "## Testing 123",
+        "level": 1,
+        "srcPath": "test/fixtures/scss/styleguide.md"
+    },
+    "level": 0,
+    "sectionabc-test": {
+        "sectionName": "sectionabc-test",
+        "level": 1,
+        "sectionLocation": [],
+        "sectionRef": "sectionRef-sectionabc-test",
+        "srcPath": "test/fixtures/scss/_test-section.scss",
+        "sectionTitle": "Test Section",
+        "variations": [
+            {
+                "variationName": ".testVariation",
+                "variationDescription": "to test",
+                "variationClass": [
+                    "testVariation"
+                ]
+            },
+            {
+                "variationName": ".testVariation.test2Variation",
+                "variationDescription": "two variation test",
+                "variationClass": [
+                    "testVariation",
+                    "test2Variation"
+                ]
+            },
+            {
+                "variationName": ":hover",
+                "variationDescription": "with hover",
+                "variationClass": [
+                    "pseudo-class-hover"
+                ]
+            },
+            {
+                "variationName": ":focus",
+                "variationDescription": "with focus",
+                "variationClass": [
+                    "pseudo-class-focus"
+                ]
+            },
+            {
+                "variationName": ".text:hover",
+                "variationDescription": "tricky",
+                "variationClass": [
+                    "text",
+                    "pseudo-class-hover"
+                ]
+            }
+        ],
+        "markup": "simple-test.hbs",
+        "markupContext": {
+            "testValue": "BIG TEXT TEST"
+        },
+        "newjsonpath": {
+            "sectionName": "newjsonpath",
+            "level": 2,
+            "htmlFile": "newjsonpath/newjsonpath.html",
+            "sectionLocation": [
+                "Test Section"
+            ],
+            "sectionRef": "sectionRef-test-section-newjsonpath",
+            "destPath": "./newjsonpath.html",
+            "srcPath": "test/fixtures/scss/_test-section.scss",
+            "sectionTitle": "Test Section new Json Path",
+            "variations": [
+                {
+                    "variationName": ".testVariation",
+                    "variationDescription": "to test",
+                    "variationClass": [
+                        "testVariation"
+                    ]
+                },
+                {
+                    "variationName": ".testVariation.test2Variation",
+                    "variationDescription": "two variation test",
+                    "variationClass": [
+                        "testVariation",
+                        "test2Variation"
+                    ]
+                },
+                {
+                    "variationName": ":hover",
+                    "variationDescription": "with hover",
+                    "variationClass": [
+                        "pseudo-class-hover"
+                    ]
+                },
+                {
+                    "variationName": ":focus",
+                    "variationDescription": "with focus",
+                    "variationClass": [
+                        "pseudo-class-focus"
+                    ]
+                },
+                {
+                    "variationName": ".text:hover",
+                    "variationDescription": "tricky",
+                    "variationClass": [
+                        "text",
+                        "pseudo-class-hover"
+                    ]
+                }
+            ],
+            "properties": {
+                "json-file": [
+                    "simple-test-newPath.json"
+                ]
+            },
+            "markup": "simple-test.hbs",
+            "markupContext": {
+                "testValue": "BIG TEXT NEW JSON"
+            },
+            "markupContextPath": "simple-test-newPath.json"
+        },
+        "newjsonpathout": {
+            "sectionName": "newjsonpathout",
+            "level": 2,
+            "htmlFile": "newjsonpathout/newjsonpathout.html",
+            "sectionLocation": [
+                "Test Section"
+            ],
+            "sectionRef": "sectionRef-test-section-newjsonpathout",
+            "destPath": "./newjsonpathout.html",
+            "srcPath": "test/fixtures/scss/_test-section.scss",
+            "sectionTitle": "Test Section new Json Path out",
+            "variations": [
+                {
+                    "variationName": ".testVariation",
+                    "variationDescription": "to test",
+                    "variationClass": [
+                        "testVariation"
+                    ]
+                },
+                {
+                    "variationName": ".testVariation.test2Variation",
+                    "variationDescription": "two variation test",
+                    "variationClass": [
+                        "testVariation",
+                        "test2Variation"
+                    ]
+                },
+                {
+                    "variationName": ":hover",
+                    "variationDescription": "with hover",
+                    "variationClass": [
+                        "pseudo-class-hover"
+                    ]
+                },
+                {
+                    "variationName": ":focus",
+                    "variationDescription": "with focus",
+                    "variationClass": [
+                        "pseudo-class-focus"
+                    ]
+                },
+                {
+                    "variationName": ".text:hover",
+                    "variationDescription": "tricky",
+                    "variationClass": [
+                        "text",
+                        "pseudo-class-hover"
+                    ]
+                }
+            ],
+            "properties": {
+                "json-file": [
+                    "../testDir/simple-test-newPath.json"
+                ]
+            },
+            "markup": "simple-test.hbs",
+            "markupContext": {
+                "testValue": "BIG TEXT NEW out"
+            },
+            "markupContextPath": "../testDir/simple-test-newPath.json"
+        },
+        "angular": {
+            "sectionName": "angular",
+            "level": 2,
+            "htmlFile": "angular/angular.html",
+            "sectionLocation": [
+                "Test Section"
+            ],
+            "sectionRef": "sectionRef-test-section-angular",
+            "destPath": "./angular.html",
+            "srcPath": "test/fixtures/scss/_test-section.scss",
+            "sectionTitle": "Test Section Angular",
+            "variations": [
+                {
+                    "variationName": ".testVariation",
+                    "variationDescription": "to test",
+                    "variationClass": [
+                        "testVariation"
+                    ]
+                },
+                {
+                    "variationName": ".testVariation.test2Variation",
+                    "variationDescription": "two variation test",
+                    "variationClass": [
+                        "testVariation",
+                        "test2Variation"
+                    ]
+                },
+                {
+                    "variationName": ":hover",
+                    "variationDescription": "with hover",
+                    "variationClass": [
+                        "pseudo-class-hover"
+                    ]
+                },
+                {
+                    "variationName": ":focus",
+                    "variationDescription": "with focus",
+                    "variationClass": [
+                        "pseudo-class-focus"
+                    ]
+                },
+                {
+                    "variationName": ".text:hover",
+                    "variationDescription": "tricky",
+                    "variationClass": [
+                        "text",
+                        "pseudo-class-hover"
+                    ]
+                }
+            ],
+            "properties": {
+                "angular-wrapper": [
+                    "<div class=\"widget-wrapper\"></div>"
+                ]
+            },
+            "angularMarkup": "<still-widget widget=\"widget\" customize=\"customize\"></still-widget>",
+            "angularMarkupPath": "simple-test-angular.html\n",
+            "angularContext": {
+                "customize": false,
+                "widget": {
+                    "size": "m",
+                    "icon": "icon-alert",
+                    "topText": "Toptext",
+                    "bottomText": "bottom text"
+                }
+            }
+        },
+        "angularnewjson": {
+            "sectionName": "angularnewjson",
+            "level": 2,
+            "htmlFile": "angularnewjson/angularnewjson.html",
+            "sectionLocation": [
+                "Test Section"
+            ],
+            "sectionRef": "sectionRef-test-section-angularnewjson",
+            "destPath": "./angularnewjson.html",
+            "srcPath": "test/fixtures/scss/_test-section.scss",
+            "sectionTitle": "Test Section Angular",
+            "variations": [
+                {
+                    "variationName": ".testVariation",
+                    "variationDescription": "to test",
+                    "variationClass": [
+                        "testVariation"
+                    ]
+                },
+                {
+                    "variationName": ".testVariation.test2Variation",
+                    "variationDescription": "two variation test",
+                    "variationClass": [
+                        "testVariation",
+                        "test2Variation"
+                    ]
+                },
+                {
+                    "variationName": ":hover",
+                    "variationDescription": "with hover",
+                    "variationClass": [
+                        "pseudo-class-hover"
+                    ]
+                },
+                {
+                    "variationName": ":focus",
+                    "variationDescription": "with focus",
+                    "variationClass": [
+                        "pseudo-class-focus"
+                    ]
+                },
+                {
+                    "variationName": ".text:hover",
+                    "variationDescription": "tricky",
+                    "variationClass": [
+                        "text",
+                        "pseudo-class-hover"
+                    ]
+                }
+            ],
+            "properties": {
+                "angular-wrapper": [
+                    "<div class=\"widget-wrapper\"></div>"
+                ],
+                "json-file": [
+                    "simple-test-angular-newjson.json"
+                ]
+            },
+            "angularMarkup": "<still-widget widget=\"widget\" customize=\"customize\"></still-widget>",
+            "angularMarkupPath": "simple-test-angular.html\n",
+            "angularContext": {
+                "testValue": "ANGULAR NEW JSON",
+                "customize": true,
+                "widget": {
+                    "size": "m",
+                    "icon": "icon-alert",
+                    "topText": "Toptext",
+                    "bottomText": "bottom text"
+                }
+            },
+            "angularContextPath": "simple-test-angular-newjson.json"
+        }
+    }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Style Guide (Iframe)</title>
+
+    <meta name="description" content="">
+    <meta name="generator" content="kss-node">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- bower:css -->
+    <!-- endbower -->
+
+    <link rel="stylesheet" href="css/style-guide.css">
+    <link rel="stylesheet" href="css/documentation.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style id="inline-kss-hack"></style>
+    <style id="inline-kss-hack-desktop" media="screen and (min-width: 992px)" type="text/css"></style>
+</head>
+<body id="kss-node">
+
+<div class="kss-sidebar kss-style">
+    <header class="kss-header">
+
+    </header>
+    <nav class="kss-nav">
+        <ul class="kss-nav__menu">
+                <li class="kss-nav__menu-item kss-menu-section">
+                    <a href="index.html"
+                       ><span
+                            class="kss-nav__name kss-section-header ">Overview</span></a>
+                    <ul class="kss-nav__menu-child">
+                    </ul>
+                </li>
+                <li class="kss-nav__menu-item kss-menu-section">
+                    <a href="sectionabc-test.html"
+                       ><span
+                            class="kss-nav__name kss-section-header ">Test Section</span></a>
+                    <ul class="kss-nav__menu-child">
+                                <li class="kss-nav__menu-item">
+                                    <a href="newjsonpath.html#kssref-newjsonpath"><span
+                                            class="kss-nav__name kss-item">Test Section new Json Path</span></a>
+                                </li>
+                                <li class="kss-nav__menu-item">
+                                    <a href="newjsonpath.html#kssref-newjsonpathout"><span
+                                            class="kss-nav__name kss-item">Test Section new Json Path out</span></a>
+                                </li>
+                                <li class="kss-nav__menu-item">
+                                    <a href="newjsonpath.html#kssref-angular"><span
+                                            class="kss-nav__name kss-item">Test Section Angular</span></a>
+                                </li>
+                                <li class="kss-nav__menu-item">
+                                    <a href="newjsonpath.html#kssref-angularnewjson"><span
+                                            class="kss-nav__name kss-item">Test Section Angular</span></a>
+                                </li>
+                    </ul>
+                </li>
+        </ul>
+    </nav>
+</div>
+
+
+<article role="main" class="kss-main">
+
+</article>
+
+
+<!-- bower:js -->
+<!-- endbower -->
+
+<script src="js/project.min.js"></script>
+
+<script src="js/select.js"></script>
+<script src="js/kss.js"></script>
+<script src="js/prettify.js"></script>
+
+
+<script>
+    prettyPrint();
+</script>
+<script>
+    var switchTheme;
+    $(document).ready(function () {
+
+        var switchThemeWaiting;
+
+        switchTheme = function (el) {
+            var mobileStyle,
+                    desktopStyle;
+
+            mobileStyle = $('#kss-breakpoint-mobile');
+            desktopStyle = $('#kss-breakpoint-desktop');
+
+            var mobileHref = mobileStyle.attr("href");
+            mobileStyle.attr("href", mobileStyle.attr("data-toggle-href"));
+            mobileStyle.attr("data-toggle-href", mobileHref);
+
+            var desktopHref = desktopStyle.attr("href");
+            desktopStyle.attr("href", desktopStyle.attr("data-toggle-href"));
+            desktopStyle.attr("data-toggle-href", desktopHref);
+
+            window.clearTimeout(switchThemeWaiting);
+
+            var buttonToggleText = $(el).attr("data-toggle-name");
+
+            $(el).attr("data-toggle-name", $(el).text());
+
+            $(el).text(buttonToggleText);
+
+            $(el).addClass("waiting");
+            switchThemeWaiting = window.setTimeout(function () {
+                new KssStateGenerator;
+                $(el).removeClass("waiting");
+            }, 1000);
+
+        };
+    });
+</script>
+
+
+
+</body>
+
+</html>
