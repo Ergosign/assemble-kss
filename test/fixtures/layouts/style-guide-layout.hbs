@@ -1,222 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Style Guide</title>
+<html lang="en"
+      ng-app="fleetInfo"
+      ng-cloak>
+    <head>
+        <meta charset="utf-8">
+        <title>Style Guide</title>
 
-    <meta name="description" content="">
-    <meta name="generator" content="kss-node">
-    <meta name="viewport" content="width=device-width">
-
-    <!-- bower:css -->
-    <!-- endbower -->
-
-    <link rel="stylesheet" href="css/style-guide.css">
-    <link rel="stylesheet" href="css/documentation.css">
-    <link rel="stylesheet" href="css/styles.css">
-
-    <style id="inline-kss-hack"></style>
-    <style id="inline-kss-hack-desktop" media="screen and (min-width: 992px)" type="text/css"></style>
-</head>
-<body id="kss-node">
-
-<div class="kss-sidebar kss-style">
-    <header class="kss-header">
-
-    </header>
-    <nav class="kss-nav">
-        <ul class="kss-nav__menu">
-            {{#eachSectionRoot page.sections}}
-                <li class="kss-nav__menu-item kss-menu-section">
-                    <a href="{{sectionName}}.html"
-                       {{#ifReferenceOfSection ../sectionName}}class="kss-active-section"{{/ifReferenceOfSection}}><span
-                            class="kss-nav__name kss-section-header ">{{sectionTitle}}</span></a>
-                    <ul class="kss-nav__menu-child">
-                        {{#eachSubSectionQuery sectionName}}
-                            {{#ifLevel 2}}
-                                <li class="kss-nav__menu-item">
-                                    <a href="{{../../sectionName}}.html#kssref-{{sectionName}}"><span
-                                            class="kss-nav__name kss-item">{{sectionTitle}}</span></a>
-                                </li>
-                            {{/ifLevel}}
-                        {{/eachSubSectionQuery}}
-                    </ul>
-                </li>
-            {{/eachSectionRoot}}
-        </ul>
-    </nav>
-</div>
+        <meta name="description"
+              content="">
+        <meta name="generator"
+              content="kss-node">
+        <meta name="viewport"
+              content="width=device-width">
 
 
-<article role="main" class="kss-main">
-    {{#if homepage}}
-        <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
-            {{{homepage}}}
-        </div>
-    {{else}}
+        <link rel="stylesheet"
+              href="css/ergosign-style-guide.css">
+        <!-- bower:css -->
+        <!-- endbower -->
+        <link rel="stylesheet"
+              href="css/documentation.css">
+        <link rel="stylesheet"
+              href="css/styles.css">
 
-    {{!
-    Display each section, in order.
-
-    The "root" element comes first in this loop, and can be detected using
-    the "#ifLevel 1" block as seen below.
-    }}
-        {{#eachSubSectionQuery sectionName page.sections}}
-            {{#ifLevel 1}}
-            <div id="kssref-{{sectionName}}" class="kss-section kss-section--depth-{{level}}">
-            {{else}}
-            <section id="kssref-{{sectionName}}" class="kss-section kss-section--depth-{{level}}">
-            {{/ifLevel}}
-
-            <div class="kss-style">
-                <h{{level}} class="kss-title kss-title--level-{{level}}">
-                    <a class="kss-title__permalink" href="#kssref-{{sectionName}}">
-                        {{sectionTitle}}
-                        <span class="kss-title__permalink-hash">#permalink</span>
-                    </a>
-                </h{{level}}>
-
-                {{#if description}}
-                    <div class="kss-description">
-                        {{#markdown}}{{{description}}}{{/markdown}}
+        <style id="inline-kss-hack"></style>
+        <style id="inline-kss-hack-desktop"
+               media="screen and (min-width: 992px)"
+               type="text/css"></style>
+    </head>
+    <body class="es-styleguide show-mainnav"
+          id="kss-node">
+        <div class="es-header">
+            <div class="es-header-inner">
+                <div class="es-header-headline">
+                    <h2>{{uppercase kss.customerName}} - {{uppercase kss.projectName}}</h2>
+                    <h3>Version {{kss.versionNumber}} - {{buildDate}}</h3>
+                </div>
+                <div class="es-header-search-bar-wrapper es-search-collapsed">
+                    <div class="es-header-search-bar">
+                        <input placeholder="Search in components, descriptions and variations.."
+                               class="es-header-search-input">
                     </div>
-                {{/if}}
-
+                    <div class="es-header-search-results-flyout">
+                    </div>
+                </div>
+                <div class="es-header-logo-and-search">
+                    <div class="es-header-search-bar-container es-search-collapsed">
+                        <button class="es-header-search-button">
+                            <span class="es-search-search-button es-ico ico-search"></span><span class="es-search-close-button es-ico ico-delete"></span>
+                        </button>
+                    </div>
+                    <div class="es-header-divider"></div>
+                    <img src="img/ergosign-logo.svg"
+                         class="es-logo"
+                         alt="Ergosign Styleguide"
+                         title="Ergosign Styleguide"/>
+                </div>
             </div>
 
-            {{#if markup}}
-                <div class="kss-modifier__wrapper">
-                    <div class="kss-modifier__heading kss-style">Example
-                        <div class="kss-modifier__heading--srcPath">{{srcPath}}</div>
-                    </div>
-                    {{~#if variations}}
-                        <div class="kss-modifier__default-name kss-style">Default styling</div>
-                    {{/if~}}
-                    <div class="kss-modifier__example kss-wrapper
-                        {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
-                     ">
-                        {{{markupWithStyle}}}
-                    </div>
-                    {{~#if variations~}}
-                        Variations: <select class="modifier-select">
-                        <option value="-">No Variations</option>
-                        <option value="all">All Variations</option>
-                        {{~#each variations~}}
-                            <option value="{{variationName}}">{{variationDescription}}</option>
-                        {{~/each~}}
-                    </select>
+            <div class="es-header-color-strip">
+                <div class="es-header-color-strip-yellow"></div>
+                <div class="es-header-color-strip-red"></div>
+                <div class="es-header-color-strip-blue"></div>
+            </div>
+        </div>
 
-                        <div>
-                            {{#eachVariation}}
-                                <div class="kss-modifier__container">
-                                    <div class="kss-modifier__name kss-style">
-                                        {{~variationName~}}
-                                    </div>
-                                    <div class="kss-modifier__description kss-style">
-                                        {{~variationDescription~}}
-                                    </div>
-                                    <div class="kss-modifier__example kss-wrapper
-                                            {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
-                                        ">
-                                        {{{markupWithStyle}}}
-                                    </div>
-                                </div>
-                            {{/eachVariation}}
-                        </div>
+        <div class="es-mainnav-wrapper">
+            <ul class="es-mainnav">
+                {{#with page}}
+                    {{#each navBarItems}}
+                        {{#is sectionName 'index'}}
+                            <li>
+                                <a href="{{sectionName}}.html"
+                                   class="{{#is sectionName ../../parentSectionName}}es-active-section{{/is}}">
+                                    <span class="es-mainnav-title">{{sectionTitle}}</span></a>
+                            </li>
+                        {{else}}
+                            <li>
+                                <a class="es-mainnav-item {{#is sectionName ../../parentSectionName}}es-active-section {{else}} nav-collapsed {{/is}}">
+                                    <span class="nav-item-disclosure-icon es-ico ico-disclosuredown"></span>
+                                    <span class="es-mainnav-title">{{sectionTitle}}</span></a>
+                                <ul id="subsection-{{sectionName}}"
+                                    class="{{#is sectionName ../../parentSectionName}} {{else}}submenu-collapsed{{/is}}">
+                                    {{#each this.subSections}}
+                                        <li class="{{#is sectionName ../../../sectionName}}es-active-subsection{{/is}}">
+                                            <a href="{{sectionName}}.html">
+                                                <span class="es-mainnav-subtitle">{{sectionTitle}}</span></a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </li>
+                        {{/is}}
+                    {{/each}}
+                {{/with}}
+            </ul>
+        </div>
+
+        <article role="main"
+                 class="es-main-content">
+
+            {{#eachSubSectionQuery sectionName page.subSections}}
+                <div class="es-section-header es-section-header--level-{{level}}">
+
+                    <div class="es-section-title">
+                        <div class="es-section-anchor"
+                             id="{{sectionRef}}"></div>
+                        <h{{level}}>{{sectionTitle}}</h{{level}}>
+                        {{#ifLevel 2}}
+                        {{else}}
+                            <a href="#{{sectionRef}}"><span class="es-ico ico-link"></span></a>
+                        {{/ifLevel}}
+                    </div>
+
+                    {{#if properties.workflow-status}}
+                        <h3 class="es-workflow-status es-workflow-status--{{properties.workflow-status}}">
+                            STATUS:{{properties.workflow-status}}</h3>
                     {{/if}}
 
+                    {{#if properties.scope}}
+                        <h3 class="es-scope es-scope--{{properties.scope}}">SCOPE:{{properties.scope}}</h3>
+                    {{/if}}
+
+                    {{#if properties.antetype-filename}}
+                        <div class="es-section-description">Antetype File: {{properties.antetype-filename}}</div>
+                    {{/if}}
+
+                    {{#if properties.antetype-module}}
+                        <div class="es-section-description">Antetype Search Path: {{properties.antetype-module}}</div>
+                    {{/if}}
+
+                    {{#if description}}
+                        <div class="es-section-description">{{#markedMarkdown}}{{description}}{{/markedMarkdown}}</div>
+                    {{/if}}
+
+                    {{#if properties.example-image}}
+                        <h4>Example Image</h4>
+                        <div class="es-section__image-wrapper"><img class="es-section__image"
+                                                                    src="style-guide-images/{{prefixWithSrcPath properties.example-image}}"/>
+                        </div>
+                    {{/if}}
                 </div>
-                <div class="kss-modifier__wrapper">
-                    <div class="kss-modifier__heading">
-                        <span>HTML</span> <span class="kss-modifier__heading--markupPath">{{displayMarkupPath}}</span>
-            <span class="snippet-show-button"><button onclick="KssShowHideMarkup(this);">Show / Hide
-            </button></span>
+
+                {{#if markup}}
+                <div class="es-section-example  {{~#if properties.usefullwidth}} es-section-example--fullWidth{{/if}}">
+                    <div>
+                        {{#unless properties.no-iframe}}
+                            <div class="es-section-example-toggle">
+                                <div class="es-section-example-toggle-title">Example</div>
+                                <form>
+                                    <input type="radio"
+                                           name="rb-iframe"
+                                           checked>
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="smartphone">
+                                        <span class="es-ico ico-smartphone"></span>
+                                    </button>
+
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="tablet">
+                                        <span class="es-ico ico-tablet"></span>
+                                    </button>
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="laptop">
+                                        <span class="es-ico ico-system"></span>
+                                    </button>
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="all">
+                                        <span class="es-ico ico-placeholder"></span>
+                                    </button>
+                                </form>
+                            </div>
+                        {{/unless}}
+
+                        {{#ifLevel 1}}
+                        {{else}}
+                            <div class="es-section-example-srcpath">
+                                <a href="{{../../../gitlabStemUrl}}{{srcPath}}">{{srcPath}}</a>
+                            </div>
+                        {{/ifLevel}}
+
+                        {{#unless properties.no-iframe}}
+
+                            <iframe class="iframe-smartphone iframe-visible"
+                                    data-iframe="smartphone"
+                                    style="{{#if properties.iframe-height.[0]}}height: {{properties.iframe-height.[0]}}; {{/if}}
+                                        {{#if ../../media-queries.mediaQueries.[0]}}width: {{../../../media-queries.mediaQueries.[0].to}}px{{/if}}"
+                                    src='{{htmlFile}}'></iframe>
+
+
+                            <iframe class="iframe-tablet"
+                                    data-iframe="tablet"
+                                    src='{{htmlFile}}'
+                                    style="height:{{#if properties.iframe-height.[1]}} {{properties.iframe-height.[1]}}
+                                    {{else}} {{#if properties.iframe-height.[0]}} {{properties.iframe-height.[0]}}{{/if}}{{/if}};
+                                        {{#if ../../media-queries.mediaQueries.[1]}}width: {{../../../media-queries.mediaQueries.[1].to}}px{{/if}}"></iframe>
+                            <iframe class="iframe-laptop"
+                                    data-iframe="laptop"
+                                    src='{{htmlFile}}'
+                                    style="height:{{#if properties.iframe-height.[2]}} {{properties.iframe-height.[2]}}
+                                    {{else}} {{#if properties.iframe-height.[0]}} {{properties.iframe-height.[0]}}{{/if}}{{/if}};
+                                        {{#if ../../media-queries.mediaQueries.[2]}}width: {{../../../media-queries.mediaQueries.[2].to}}px{{/if}}"></iframe>
+
+                        {{else}}
+                            {{> iframe-content}}
+                        {{/unless}}
                     </div>
-                    <div class="kss-markup kss-style markup-collapsed">
-                        <pre class="prettyprint linenums lang-html"><code
-                                data-language="html">{{markupWithStyle '[modifier_classs]'}}</code></pre>
-                    </div>
+
+                    {{#if properties.hidemarkup}}
+                        <!--markup hidden-->
+                    {{else}}
+                        <div class="es-section-markup es-section-markup--collapsed">
+                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>HTML
+                            </div>
+
+                            <div class="es-section-markup-codebox">
+                    <pre class="prettyprint linenums lang-html"><code
+                        data-language="html">{{markupWithStyle '[modifier_class]'}}</code><div class="es-section-markup-divider"></div></pre>
+                                <button class="codebox-copy-button"
+                                        data-clipboard-text="{{markupWithStyle '[modifier_class]'}}">
+                                    <span class="es-ico ico-copy"></span></button>
+                            </div>
+                            <div class="es-section-markup-srcpath">{{#if ../../../gitlabStemUrl}}<a
+                                href="{{../../../../gitlabStemUrl}}{{displayMarkupPath}}">{{displayMarkupPath}}</a>{{else}}{{displayMarkupPath}}{{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{else}}
+                    {{#if angularMarkup}}
+                    <div class="es-section-example {{~#if properties.usefullwidth}} es-section-example--fullWidth{{/if}}">
+
+                        <styleguide-angular-component {{#requiresPseudoStateVariations}}generate-pseudo-states='true' {{#if properties.pseudostatesasflex}}pseudo-states-as-flex="true" {{/if}}{{/requiresPseudoStateVariations}}
+                            variations='{{stringify variations}}'
+                            wrapper-classes='"es-section-example-control {{~#each properties.wrapper-classes}} es-section-example-control--{{this}}{{/each~}}"'
+                            {{#if angularContext}}directive-scope='{{stringify angularContext}}'{{/if}}
+                        >
+                            {{#if properties.angular-wrapper}}
+                                <html-wrapper>
+                                    <xmp>{{{properties.angular-wrapper.[0]}}}</xmp>
+                                </html-wrapper>
+                            {{/if}}
+                            <directive-markup>
+                                <xmp>{{{angularMarkup}}}</xmp>
+                            </directive-markup>
+                        </styleguide-angular-component>
+
+                        <div class="es-section-markup es-section-markup--collapsed">
+                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>Angular
+                                HTML
+                            </div>
+                            <div class="es-section-markup-srcpath">{{#if ../../../gitlabStemUrl}}<a
+                                href="{{../../../../gitlabStemUrl}}{{displayMarkupPath}}">{{displayMarkupPath}}</a>{{else}}{{displayMarkupPath}}{{/if}}
+                            </div>
+                            <div class="es-section-markup-codebox">
+                                <pre class="prettyprint linenums lang-html"><code data-language="html">{{angularMarkup}} </code></pre>
+                            </div>
+                        </div>
+                        <div class="es-section-markup es-section-markup--collapsed">
+                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>Angular
+                                Context
+                            </div>
+                            <div class="es-section-markup-srcpath">{{#if ../../../gitlabStemUrl}}<a
+                                href="{{../../../../gitlabStemUrl}}{{displayContextPath}}">{{displayContextPath}}</a>{{else}}{{displayContextPath}}{{/if}}
+                            </div>
+                            <div class="es-section-markup-codebox">
+                        <pre class="prettyprint linenums lang-js"><code
+                            data-language="js">{{stringify angularContext}} </code></pre>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/if}} {{!-- if markup --}}
+
+                {{#ifLevel 1}}
                 </div>
+                {{else}}
+                    </section>
+                {{/ifLevel}}
+            {{/eachSubSectionQuery}}
+        </article>
 
-            {{else}}
-                {{#if angularMarkup}}
-                    <styleguide-angular-component variations='{{stringify variations}}' {{#if angularContext}}directive-scope='{{stringify angularContext}}'{{/if}}>
-                        {{#if properties.angular-wrapper}}
-                            <html-wrapper>
-                                <xmp>{{{properties.angular-wrapper.[0]}}}</xmp>
-                            </html-wrapper>
-                        {{/if}}
-                        <directive-markup>
-                            <xmp>{{{angularMarkup}}}</xmp>
-                        </directive-markup>
-                    </styleguide-angular-component>
-                {{/if}}
-            {{/if}} {{!-- if markup --}}
+        <!-- bower:js -->
+        <!-- endbower -->
 
-            {{#ifLevel 1}}
-            </div>
-            {{else}}
-                </section>
-            {{/ifLevel}}
-        {{/eachSubSectionQuery}}
-    {{/if}}
-</article>
+        <!-- TODO replace with your projects javascript file (only replace the name) -->
+        <script src="js/init-uxhub.min.js"></script>
 
+        <script src="js/select.js"></script>
+        <script src="js/ergosign-style-guide.min.js"></script>
+        <script src="js/prettify.js"></script>
 
-<!-- bower:js -->
-<!-- endbower -->
+        <script>
+            prettyPrint();
+        </script>
 
-<script src="js/project.min.js"></script>
+        <div class="modal-dialog"></div>
 
-<script src="js/select.js"></script>
-<script src="js/kss.js"></script>
-<script src="js/prettify.js"></script>
-
-
-<script>
-    prettyPrint();
-</script>
-<script>
-    var switchTheme;
-    $(document).ready(function () {
-
-        var switchThemeWaiting;
-
-        switchTheme = function (el) {
-            var mobileStyle,
-                    desktopStyle;
-
-            mobileStyle = $('#kss-breakpoint-mobile');
-            desktopStyle = $('#kss-breakpoint-desktop');
-
-            var mobileHref = mobileStyle.attr("href");
-            mobileStyle.attr("href", mobileStyle.attr("data-toggle-href"));
-            mobileStyle.attr("data-toggle-href", mobileHref);
-
-            var desktopHref = desktopStyle.attr("href");
-            desktopStyle.attr("href", desktopStyle.attr("data-toggle-href"));
-            desktopStyle.attr("data-toggle-href", desktopHref);
-
-            window.clearTimeout(switchThemeWaiting);
-
-            var buttonToggleText = $(el).attr("data-toggle-name");
-
-            $(el).attr("data-toggle-name", $(el).text());
-
-            $(el).text(buttonToggleText);
-
-            $(el).addClass("waiting");
-            switchThemeWaiting = window.setTimeout(function () {
-                new KssStateGenerator;
-                $(el).removeClass("waiting");
-            }, 1000);
-
-        };
-    });
-</script>
-
-{{{scripts}}}
-
-</body>
+        {{{scripts}}}
+    </body>
 
 </html>

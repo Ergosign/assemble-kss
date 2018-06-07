@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         assemble: {
             options: {
                 plugins: ['lib/assembleKssPlugin.js'],
-                partials:['test/fixtures/scss/**/*.hbs']
+                partials:['test/fixtures/scss/**/*.hbs', 'test/fixtures/layouts/iframe-content.hbs']
             },
             test: {
                 options: {
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
                         overviewMarkdownFile:"test/fixtures/scss/styleguide.md",
                         dest: "test/actual",
                         dataDestination: 'test/actual/data',
-                        template: "test/fixtures/layouts/style-guide-layout-iframe.hbs",
+                        template: "test/fixtures/layouts/style-guide-layout.hbs",
                         templateIframe: "test/fixtures/layouts/iframe-content.hbs"
                     }
                 }
