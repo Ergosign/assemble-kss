@@ -1,40 +1,279 @@
-<div class="kss-modifier__wrapper">
-    <div class="kss-modifier__heading kss-style">Example
-        <div class="kss-modifier__heading--srcPath">{{srcPath}}</div>
-    </div>
-    {{~#if variations}}
-        <div class="kss-modifier__default-name kss-style">Default styling</div>
-    {{/if~}}
-    <div class="kss-modifier__example kss-wrapper
-                        {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
-                     ">
-        {{{markupWithStyle}}}
-    </div>
-    {{~#if variations~}}
-        Variations: <select class="modifier-select">
-        <option value="-">No Variations</option>
-        <option value="all">All Variations</option>
-        {{~#each variations~}}
-            <option value="{{variationName}}">{{variationDescription}}</option>
-        {{~/each~}}
-    </select>
+{{#unless properties.no-iframe}}
+    <link rel="stylesheet"
+          href="{{{styleGuideRootFolderPath}}}css/ergosign-style-guide.css">
+    <link rel="stylesheet"
+          href="{{{styleGuideRootFolderPath}}}css/documentation.css">
+    <link rel="stylesheet"
+          href="{{{styleGuideRootFolderPath}}}css/styles.css">
 
-        <div>
-            {{#eachVariation}}
-                <div class="kss-modifier__container">
-                    <div class="kss-modifier__name kss-style">
-                        {{~variationName~}}
+{{/unless}}
+
+{{~#if variations}}
+    <div class="es-section-example-default">Default styling</div>
+{{/if~}}
+<div
+    class="es-section-example-control {{~#each properties.wrapper-classes}} es-section-example-control--{{this}}{{/each~}}">
+
+    {{#requiresPseudoStateVariations}}
+        <div class="es-pseudo-row">
+            <div class="es-pseudo-row__cell {{~#each properties.pseudowrapperclasses}} es-pseudo-row__cell--{{this}}{{/each~}}">
+                <div class="es-pseudo-row__title">Normal</div>
+                <div>
+                    {{{markupWithStyle }}}
+                </div>
+            </div>
+            {{#eachPseudoVariation}}
+                <div class="es-pseudo-row__cell {{~#each properties.pseudowrapperclasses}} es-pseudo-row__cell--{{this}}{{/each~}}">
+                    <div class="es-pseudo-row__title">:{{markupContext.pseudoClassName}}</div>
+                    <div>
+                        {{{markupWithStyle }}}
                     </div>
-                    <div class="kss-modifier__description kss-style">
-                        {{~variationDescription~}}
-                    </div>
-                    <div class="kss-modifier__example kss-wrapper
-                                            {{~#each properties.wrapper-classes}} kss-wrapper--{{this}}{{/each~}}
-                                        ">
+                </div>
+            {{/eachPseudoVariation}}
+        </div>
+    {{else}}
+        {{#hasSizeVariations}}
+            {{#includeSizeVariation '100'}}
+                <div>Layout 100-fixed:</div>
+                <div class="layout-100--fixed">
+                    <div class="ld-layout-item__wrapper">
                         {{{markupWithStyle}}}
                     </div>
                 </div>
-            {{/eachVariation}}
-        </div>
-    {{/if}}
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '100-white'}}
+                <div>Layout 100-fixed:</div>
+                <div class="layout-100--fixed layout--white">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '50'}}
+                <div>Layout 50-fixed:</div>
+                <div class="layout-50--fixed">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '33'}}
+                <div>Layout 33-fixed:</div>
+                <div class="layout-33--fixed">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '25'}}
+                <div>Layout 25-fixed:</div>
+                <div class="layout-25--fixed">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '25-split'}}
+                <div>Layout 25-split:</div>
+                <div class="layout-25-split--fixed">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '100-flex'}}
+                <div>Layout 100-flex:</div>
+                <div class="layout-100--flex">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '50-flex'}}
+                <div>Layout 50-flex:</div>
+                <div class="layout-50--flex">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                    <div class="ld-layout-item__wrapper">
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '50-split-flex'}}
+                <div>Layout 50-split-flex:</div>
+                <div class="layout-50-split--flex">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                    <div class="ld-layout-item__wrapper">
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '60-flex'}}
+                <div>Layout 60-(40)-flex:</div>
+                <div class="layout-60-40--flex">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                    <div class="ld-layout-item__wrapper">
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+            {{#includeSizeVariation '40-flex'}}
+                <div>Layout 40-(60)-flex:</div>
+                <div class="layout-40-60--flex">
+                    <div class="ld-layout-item__wrapper">
+                        {{{markupWithStyle}}}
+                    </div>
+                    <div class="ld-layout-item__wrapper">
+                    </div>
+                </div>
+            {{/includeSizeVariation}}
+        {{else}}
+            {{{markupWithStyle}}}
+        {{/hasSizeVariations}}
+    {{/requiresPseudoStateVariations}}
 </div>
+{{~#if variations~}}
+    <div class="es-section-example-variations">Variations:</div>
+    <div>
+        {{#eachVariation}}
+            <div class="es-modifier__container">
+                <div class="es-modifier__name">
+                    {{~variationName~}}
+                </div>
+                <div class="es-modifier__description">
+                    {{~variationDescription~}}
+                </div>
+                <div class="es-modifier__example es-wrapper
+                                        {{~#each properties.wrapper-classes}} es-section-example-control--{{this}}{{/each~}}
+                                    ">
+                    {{#requiresPseudoStateVariations}}
+                        <div class="es-pseudo-row">
+                            <div class="es-pseudo-row__cell {{~#each properties.pseudowrapperclasses}} es-pseudo-row__cell--{{this}}{{/each~}}">
+                                <div class="es-pseudo-row__title">Normal</div>
+                                <div>
+                                    {{{markupWithStyle }}}
+                                </div>
+                            </div>
+                            {{#eachPseudoVariation}}
+                                <div class="es-pseudo-row__cell {{~#each properties.pseudowrapperclasses}} es-pseudo-row__cell--{{this}}{{/each~}}">
+                                    <div class="es-pseudo-row__title">:{{markupContext.pseudoClassName}}</div>
+                                    <div>
+                                        {{{markupWithStyle }}}
+                                    </div>
+                                </div>
+                            {{/eachPseudoVariation}}
+                        </div>
+                    {{else}}
+                        {{#hasSizeVariations}}
+                            {{#includeSizeVariation '100'}}
+                                <div>Layout 100-fixed:</div>
+                                <div class="layout-100--fixed">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '100-white'}}
+                                <div>Layout 100-fixed:</div>
+                                <div class="layout-100--fixed layout--white">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '50'}}
+                                <div>Layout 50-fixed:</div>
+                                <div class="layout-50--fixed">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '33'}}
+                                <div>Layout 33-fixed:</div>
+                                <div class="layout-33--fixed">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '25'}}
+                                <div>Layout 25-fixed:</div>
+                                <div class="layout-25--fixed">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '25-split'}}
+                                <div>Layout 25-split:</div>
+                                <div class="layout-25-split--fixed">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '100-flex'}}
+                                <div>Layout 100-flex:</div>
+                                <div class="layout-100--flex">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '50-flex'}}
+                                <div>Layout 50-flex:</div>
+                                <div class="layout-50--flex">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                    <div class="ld-layout-item__wrapper">
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '50-split-flex'}}
+                                <div>Layout 50-split-flex:</div>
+                                <div class="layout-50-split--flex">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                    <div class="ld-layout-item__wrapper">
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '60-flex'}}
+                                <div>Layout 60-(40)-flex:</div>
+                                <div class="layout-60-40--flex">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                    <div class="ld-layout-item__wrapper">
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                            {{#includeSizeVariation '40-flex'}}
+                                <div>Layout 40-(60)-flex:</div>
+                                <div class="layout-40-60--flex">
+                                    <div class="ld-layout-item__wrapper">
+                                        {{{markupWithStyle}}}
+                                    </div>
+                                    <div class="ld-layout-item__wrapper">
+                                    </div>
+                                </div>
+                            {{/includeSizeVariation}}
+                        {{else}}
+                            {{{markupWithStyle}}}
+                        {{/hasSizeVariations}}
+                    {{/requiresPseudoStateVariations}}
+                </div>
+            </div>
+        {{/eachVariation}}
+    </div>
+{{/if}}
+
+{{#unless properties.no-iframe}}
+    <!-- TODO replace with your projects javascript file (only replace the name) -->
+    <script src="{{{styleGuideRootFolderPath}}}js/init-uxhub.min.js"></script>
+{{/unless}}
