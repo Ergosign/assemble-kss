@@ -34,7 +34,7 @@
             <div class="es-header-inner">
                 <div class="es-header-headline">
                     <h2> - </h2>
-                    <h3>Version  - 7.5.2018</h3>
+                    <h3>Version  - 24.10.2018</h3>
                 </div>
                 <div class="es-header-search-bar-wrapper es-search-collapsed">
                     <div class="es-header-search-bar">
@@ -78,20 +78,20 @@
                                     <span class="es-mainnav-title">Test Section</span></a>
                                 <ul id="subsection-sectionabc-test"
                                     class=" ">
-                                        <li class="">
-                                            <a href="newjsonpath.html">
+                                        <li class="es-active-subsection">
+                                            <a href="overview-newjsonpath.html">
                                                 <span class="es-mainnav-subtitle">Test Section new Json Path</span></a>
                                         </li>
                                         <li class="">
-                                            <a href="newjsonpathout.html">
+                                            <a href="overview-newjsonpathout.html">
                                                 <span class="es-mainnav-subtitle">Test Section new Json Path out</span></a>
                                         </li>
-                                        <li class="es-active-subsection">
-                                            <a href="angular.html">
+                                        <li class="">
+                                            <a href="overview-angular.html">
                                                 <span class="es-mainnav-subtitle">Test Section Angular</span></a>
                                         </li>
                                         <li class="">
-                                            <a href="angularnewjson.html">
+                                            <a href="overview-angularnewjson.html">
                                                 <span class="es-mainnav-subtitle">Test Section Angular</span></a>
                                         </li>
                                 </ul>
@@ -106,8 +106,8 @@
 
                     <div class="es-section-title">
                         <div class="es-section-anchor"
-                             id="sectionRef-test-section-angular"></div>
-                        <h2>Test Section Angular</h2>
+                             id="sectionRef-test-section-newjsonpath"></div>
+                        <h2>Test Section new Json Path</h2>
                     </div>
 
 
@@ -117,44 +117,84 @@
 
                 </div>
 
-                    <div class="es-section-example">
+                <div class="es-section-example">
+                    <div>
+                            <div class="es-section-example-toggle">
+                                <div class="es-section-example-toggle-title">Example</div>
+                                <form>
+                                    <input type="radio"
+                                           name="rb-iframe"
+                                           checked>
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="smartphone">
+                                        <span class="es-ico ico-smartphone"></span>
+                                    </button>
 
-                        <styleguide-angular-component
-                            variations='[{&quot;variationName&quot;:&quot;.testVariation&quot;,&quot;variationDescription&quot;:&quot;to test&quot;,&quot;variationClass&quot;:[&quot;testVariation&quot;]},{&quot;variationName&quot;:&quot;.testVariation.test2Variation&quot;,&quot;variationDescription&quot;:&quot;two variation test&quot;,&quot;variationClass&quot;:[&quot;testVariation&quot;,&quot;test2Variation&quot;]},{&quot;variationName&quot;:&quot;:hover&quot;,&quot;variationDescription&quot;:&quot;with hover&quot;,&quot;variationClass&quot;:[&quot;pseudo-class-hover&quot;]},{&quot;variationName&quot;:&quot;:focus&quot;,&quot;variationDescription&quot;:&quot;with focus&quot;,&quot;variationClass&quot;:[&quot;pseudo-class-focus&quot;]},{&quot;variationName&quot;:&quot;.text:hover&quot;,&quot;variationDescription&quot;:&quot;tricky&quot;,&quot;variationClass&quot;:[&quot;text&quot;,&quot;pseudo-class-hover&quot;]}]'
-                            wrapper-classes='"es-section-example-control"'
-                            directive-scope='{&quot;customize&quot;:false,&quot;widget&quot;:{&quot;size&quot;:&quot;m&quot;,&quot;icon&quot;:&quot;icon-alert&quot;,&quot;topText&quot;:&quot;Toptext&quot;,&quot;bottomText&quot;:&quot;bottom text&quot;}}'
-                        >
-                                <html-wrapper>
-                                    <xmp><div class="widget-wrapper"></div></xmp>
-                                </html-wrapper>
-                            <directive-markup>
-                                <xmp><still-widget widget="widget" customize="customize"></still-widget></xmp>
-                            </directive-markup>
-                        </styleguide-angular-component>
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="tablet">
+                                        <span class="es-ico ico-tablet"></span>
+                                    </button>
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="laptop">
+                                        <span class="es-ico ico-system"></span>
+                                    </button>
+                                    <input type="radio"
+                                           name="rb-iframe">
+                                    <button class="es-section-example-iframe-toggle-button"
+                                            data-iframe="all">
+                                        <span class="es-ico ico-placeholder"></span>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="es-section-example-srcpath">
+                                <a href="test/fixtures/scss/_test-section.scss">test/fixtures/scss/_test-section.scss</a>
+                            </div>
+
+
+                            <iframe class="iframe-smartphone iframe-visible"
+                                    data-iframe="smartphone"
+                                    style="
+                                        "
+                                    src='newjsonpath_newjsonpath.html'></iframe>
+
+
+                            <iframe class="iframe-tablet"
+                                    data-iframe="tablet"
+                                    src='newjsonpath_newjsonpath.html'
+                                    style="height: ;
+                                        "></iframe>
+                            <iframe class="iframe-laptop"
+                                    data-iframe="laptop"
+                                    src='newjsonpath_newjsonpath.html'
+                                    style="height: ;
+                                        "></iframe>
+
+                    </div>
 
                         <div class="es-section-markup es-section-markup--collapsed">
-                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>Angular
-                                HTML
+                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>HTML
                             </div>
-                            <div class="es-section-markup-srcpath">test/fixtures/scss/simple-test-angular.html
 
-                            </div>
                             <div class="es-section-markup-codebox">
-                                <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;still-widget widget&#x3D;&quot;widget&quot; customize&#x3D;&quot;customize&quot;&gt;&lt;/still-widget&gt; </code></pre>
+                    <pre class="prettyprint linenums lang-html"><code
+                        data-language="html">&lt;div class&#x3D;&quot;doesthiswork [modifier_class]&quot;&gt;
+    &lt;a href&#x3D;&quot;#12345&quot;&gt;BIG TEXT NEW JSON&lt;/a&gt;
+&lt;/div&gt;</code><div class="es-section-markup-divider"></div></pre>
+                                <button class="codebox-copy-button"
+                                        data-clipboard-text="&lt;div class&#x3D;&quot;doesthiswork [modifier_class]&quot;&gt;
+    &lt;a href&#x3D;&quot;#12345&quot;&gt;BIG TEXT NEW JSON&lt;/a&gt;
+&lt;/div&gt;">
+                                    <span class="es-ico ico-copy"></span></button>
+                            </div>
+                            <div class="es-section-markup-srcpath">test/fixtures/scss/simple-test.hbs
                             </div>
                         </div>
-                        <div class="es-section-markup es-section-markup--collapsed">
-                            <div class="es-section-markup-togglebtn"><span class="es-ico ico-disclosuredown"></span>Angular
-                                Context
-                            </div>
-                            <div class="es-section-markup-srcpath">
-                            </div>
-                            <div class="es-section-markup-codebox">
-                        <pre class="prettyprint linenums lang-js"><code
-                            data-language="js">{&quot;customize&quot;:false,&quot;widget&quot;:{&quot;size&quot;:&quot;m&quot;,&quot;icon&quot;:&quot;icon-alert&quot;,&quot;topText&quot;:&quot;Toptext&quot;,&quot;bottomText&quot;:&quot;bottom text&quot;}} </code></pre>
-                            </div>
-                        </div>
-
+ 
 
                     </section>
         </article>
@@ -175,7 +215,7 @@
 
         <div class="modal-dialog"></div>
 
-
+        
     </body>
 
 </html>

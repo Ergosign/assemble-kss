@@ -60,7 +60,8 @@
         "newjsonpath": {
             "sectionName": "newjsonpath",
             "level": 2,
-            "htmlFile": "newjsonpath/newjsonpath.html",
+            "htmlFile": "newjsonpath_newjsonpath.html",
+            "alternativeHtmlFile": "alternative-newjsonpath_newjsonpath.html",
             "sectionLocation": [
                 "Test Section"
             ],
@@ -121,7 +122,8 @@
         "newjsonpathout": {
             "sectionName": "newjsonpathout",
             "level": 2,
-            "htmlFile": "newjsonpathout/newjsonpathout.html",
+            "htmlFile": "newjsonpathout_newjsonpathout.html",
+            "alternativeHtmlFile": "alternative-newjsonpathout_newjsonpathout.html",
             "sectionLocation": [
                 "Test Section"
             ],
@@ -182,7 +184,8 @@
         "angular": {
             "sectionName": "angular",
             "level": 2,
-            "htmlFile": "angular/angular.html",
+            "htmlFile": "angular_angular.html",
+            "alternativeHtmlFile": "alternative-angular_angular.html",
             "sectionLocation": [
                 "Test Section"
             ],
@@ -249,7 +252,8 @@
         "angularnewjson": {
             "sectionName": "angularnewjson",
             "level": 2,
-            "htmlFile": "angularnewjson/angularnewjson.html",
+            "htmlFile": "angularnewjson_angularnewjson.html",
+            "alternativeHtmlFile": "alternative-angularnewjson_angularnewjson.html",
             "sectionLocation": [
                 "Test Section"
             ],
