@@ -66,7 +66,7 @@
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-newjsonpath",
-            "destPath": "./newjsonpath.html",
+            "destPath": "./overview-newjsonpath.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section new Json Path",
             "variations": [
@@ -128,7 +128,7 @@
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-newjsonpathout",
-            "destPath": "./newjsonpathout.html",
+            "destPath": "./overview-newjsonpathout.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section new Json Path out",
             "variations": [
@@ -190,7 +190,7 @@
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-angular",
-            "destPath": "./angular.html",
+            "destPath": "./overview-angular.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section Angular",
             "variations": [
@@ -258,7 +258,7 @@
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-angularnewjson",
-            "destPath": "./angularnewjson.html",
+            "destPath": "./overview-angularnewjson.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section Angular",
             "variations": [
