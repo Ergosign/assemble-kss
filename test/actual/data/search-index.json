@@ -60,12 +60,13 @@
         "newjsonpath": {
             "sectionName": "newjsonpath",
             "level": 2,
-            "htmlFile": "newjsonpath/newjsonpath.html",
+            "htmlFile": "newjsonpath_newjsonpath.html",
+            "alternativeHtmlFile": "alternative-newjsonpath_newjsonpath.html",
             "sectionLocation": [
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-newjsonpath",
-            "destPath": "./newjsonpath.html",
+            "destPath": "./overview-newjsonpath.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section new Json Path",
             "variations": [
@@ -121,12 +122,13 @@
         "newjsonpathout": {
             "sectionName": "newjsonpathout",
             "level": 2,
-            "htmlFile": "newjsonpathout/newjsonpathout.html",
+            "htmlFile": "newjsonpathout_newjsonpathout.html",
+            "alternativeHtmlFile": "alternative-newjsonpathout_newjsonpathout.html",
             "sectionLocation": [
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-newjsonpathout",
-            "destPath": "./newjsonpathout.html",
+            "destPath": "./overview-newjsonpathout.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section new Json Path out",
             "variations": [
@@ -182,12 +184,13 @@
         "angular": {
             "sectionName": "angular",
             "level": 2,
-            "htmlFile": "angular/angular.html",
+            "htmlFile": "angular_angular.html",
+            "alternativeHtmlFile": "alternative-angular_angular.html",
             "sectionLocation": [
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-angular",
-            "destPath": "./angular.html",
+            "destPath": "./overview-angular.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section Angular",
             "variations": [
@@ -249,12 +252,13 @@
         "angularnewjson": {
             "sectionName": "angularnewjson",
             "level": 2,
-            "htmlFile": "angularnewjson/angularnewjson.html",
+            "htmlFile": "angularnewjson_angularnewjson.html",
+            "alternativeHtmlFile": "alternative-angularnewjson_angularnewjson.html",
             "sectionLocation": [
                 "Test Section"
             ],
             "sectionRef": "sectionRef-test-section-angularnewjson",
-            "destPath": "./angularnewjson.html",
+            "destPath": "./overview-angularnewjson.html",
             "srcPath": "test/fixtures/scss/_test-section.scss",
             "sectionTitle": "Test Section Angular",
             "variations": [
